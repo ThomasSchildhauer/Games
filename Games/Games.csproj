@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Games.Plugin.Sudoku\Games.Plugin.Sudoku.csproj">
+      <Project>{458a5264-4256-43b3-91bc-0c12629f6048}</Project>
+      <Name>Games.Plugin.Sudoku</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

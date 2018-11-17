@@ -12,6 +12,17 @@ namespace Games.Plugin.Sudoku.Events
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        protected bool ChangedProperty(object newValue, ref object value, [CallerMemberName] string propertyName = null)
+        {
+            if (!Equals(newValue, value))
+            {
+                value = newValue;
+                TriggerEvent(propertyName);
+                return true;
+            }
+            return false;
+        }
+
         protected bool ChangedProperty<T>(T newValue, ref T value, [CallerMemberName] string propertyName = null)
         {
             if (!Equals(newValue, value))

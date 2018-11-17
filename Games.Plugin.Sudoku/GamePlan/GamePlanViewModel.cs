@@ -13,15 +13,15 @@ namespace Games.Plugin.Sudoku.GamePlan
         public string PlanId
         {
             get => _planId;
-            set => _planId = value;
+            set => ChangedProperty(value, ref _planId);
         }
 
         private int[,] _gamePlan;
 
         public int[,] gamePlan
         {
-            get;
-            set;
+            get => _gamePlan;
+            set => ChangedProperty<int[,]>(value, ref _gamePlan);
         }
     }
 }
