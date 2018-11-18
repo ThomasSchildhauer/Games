@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Games.Plugin.Sudoku.Database;
+using Games.Plugin.Sudoku.GamePlan;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Games.Plugin.Sudoku.ContainerConfig
             builder.RegisterType<SudokuPlugin>().As<ISudokuPlugin>();
             builder.RegisterType<DatabaseAccess>().As<IDatabaseAccess>();
             builder.RegisterType<TestDatabase>().As<IDatabase>();
+            builder.RegisterType<GamePlanViewModel>().As<IGamePlanViewModel>();
 
             return builder.Build();
         }

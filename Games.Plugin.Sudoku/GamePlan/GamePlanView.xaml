@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:Games.Plugin.Sudoku.GamePlan"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <local:GamePlanViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -29,6 +32,6 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="1" DataContext="{Binding GamePlanViewModel}" Text="{Binding Plan[1]}" Background="Red"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding gamePlan[1]}" Background="Yellow"/>
     </Grid>
 </UserControl>

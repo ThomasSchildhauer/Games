@@ -17,7 +17,6 @@ namespace Games.Plugin.Sudoku.GamePlan
         }
 
         private int[,] _gamePlan;
-
         public int[,] gamePlan
         {
             get => _gamePlan;

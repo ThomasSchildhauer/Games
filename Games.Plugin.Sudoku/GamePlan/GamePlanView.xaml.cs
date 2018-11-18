@@ -22,7 +22,9 @@ namespace Games.Plugin.Sudoku.GamePlan
     {
         public GamePlanView()
         {
-            InitializeComponent();
+            InitializeComponent();          
         }
+
+        
     }
 }
