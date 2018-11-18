@@ -25,6 +25,11 @@ namespace Games.Plugin.Sudoku.GamePlan
             InitializeComponent();          
         }
 
+        public GamePlanView(IGamePlanViewModel gamePlanViewModel):this()
+        {
+            DataContext = gamePlanViewModel;
+        }
+
         
     }
 }

@@ -12,9 +12,16 @@ namespace Games.Plugin.Sudoku
     {
         private IDatabaseAccess _databaseAccess;
         private List<IGamePlanViewModel> _gamePlanViewModels;
+        private GamePlanView _gamePlanView;
         public SudokuPlugin(IDatabaseAccess databaseAccess, List<IGamePlanViewModel> gamePlanViewModels)
         {
             _databaseAccess = databaseAccess;
+            _gamePlanView = CreateGamePlanView();
+        }
+
+        private GamePlanView CreateGamePlanView()
+        {
+            return new GamePlanView();
         }
 
         public void Run()
