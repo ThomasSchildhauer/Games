@@ -22,5 +22,13 @@ namespace Games.Plugin.Sudoku.GamePlan
             get => _gamePlan;
             set => ChangedProperty<int[,]>(value, ref _gamePlan);
         }
+
+        private int[,] _gameStartView;
+
+        public int[,] GameStartView
+        {
+            get => _gameStartView;
+            set => ChangedProperty<int[,]>(value, ref _gameStartView);
+        }
     }
 }

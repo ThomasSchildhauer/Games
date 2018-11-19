@@ -19,7 +19,6 @@ namespace Games.Plugin.Sudoku.ContainerConfig
             builder.RegisterType<DatabaseAccess>().As<IDatabaseAccess>();
             builder.RegisterType<TestDatabase>().As<IDatabase>();
             builder.RegisterType<GamePlanViewModel>().As<IGamePlanViewModel>();
-            //builder.RegisterType<GamePlanView>().UsingConstructor(typeof(GamePlanViewModel));
 
             return builder.Build();
         }

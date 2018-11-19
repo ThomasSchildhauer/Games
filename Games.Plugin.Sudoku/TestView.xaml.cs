@@ -1,5 +1,4 @@
-﻿using Games.Plugin.Sudoku;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Games
+namespace Games.Plugin.Sudoku
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for TestView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TestView : UserControl
     {
-        public MainWindow()
+        public TestView()
         {
-            StartSudokuPlugin.Start(); 
             InitializeComponent();
+            StartSudokuPlugin.Start();
         }
     }
 }

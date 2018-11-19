@@ -63,15 +63,23 @@
     </Compile>
     <Compile Include="GamePlan\IGamePlanViewModel.cs" />
     <Compile Include="ISudokuPlugin.cs" />
+    <Compile Include="StartSudokuPlugin.cs" />
     <Compile Include="SudokuPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Database\TestDatabase.cs" />
+    <Compile Include="TestView.xaml.cs">
+      <DependentUpon>TestView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="GamePlan\GamePlanView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
