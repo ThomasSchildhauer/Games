@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Games"
-        xmlns:Sudoku="clr-namespace:Games.Plugin.Sudoku.GamePlan;assembly=Games.Plugin.Sudoku"
+        xmlns:Sudoku="clr-namespace:Games.Plugin.Sudoku;assembly=Games.Plugin.Sudoku"    
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="800">
     <Grid Width="200" Height="200">
-        <Sudoku:GamePlanView Width="200" Height="200"/>
+        <Sudoku:TestView/>
+        <!--<Sudoku:GamePlanView Width="200" Height="200"/>-->
     </Grid>
 </Window>

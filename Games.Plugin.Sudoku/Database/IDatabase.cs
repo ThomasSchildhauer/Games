@@ -5,6 +5,6 @@ namespace Games.Plugin.Sudoku.Database
 {
     public interface IDatabase
     {
-        List<IGamePlanViewModel> GamePlan { get; set; }
+        List<IGamePlanViewModel> GamePlans { get; set; }
     }
 }

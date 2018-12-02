@@ -20,7 +20,7 @@ namespace GamesTest.Plugin.Sudoku.Database
             using (var mock = AutoMock.GetLoose())
             {
                 mock.Mock<IDatabase>()
-                    .Setup(x => x.GamePlan)
+                    .Setup(x => x.GamePlans)
                     .Returns(TestData.GetTestData());
 
                 var cls = mock.Create<DatabaseAccess>();
@@ -39,7 +39,7 @@ namespace GamesTest.Plugin.Sudoku.Database
             {
                 //Works but maybe there is a better way!! 
                 mock.Mock<IDatabase>()
-                    .Setup(x => x.GamePlan)
+                    .Setup(x => x.GamePlans)
                     .Returns(TestData.GetTestData);
 
                 var cls = mock.Create<DatabaseAccess>();

@@ -46,7 +46,7 @@ namespace Games.Plugin.Sudoku.Database
             }
         };
 
-        public List<IGamePlanViewModel> GamePlan
+        public List<IGamePlanViewModel> GamePlans
         {
             get => _gamePlan;
             set => _gamePlan = value;

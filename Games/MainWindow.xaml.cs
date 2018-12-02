@@ -23,7 +23,6 @@ namespace Games
     {
         public MainWindow()
         {
-            StartSudokuPlugin.Start(); 
             InitializeComponent();
         }
     }
