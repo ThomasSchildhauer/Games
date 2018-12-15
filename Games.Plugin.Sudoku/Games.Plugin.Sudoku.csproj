@@ -54,8 +54,8 @@
   <ItemGroup>
     <Compile Include="ContainerConfig\ContainerConfig.cs" />
     <Compile Include="Database\DatabaseAccess.cs" />
-    <Compile Include="Database\IDatabaseAccess.cs" />
     <Compile Include="Database\IDatabase.cs" />
+    <Compile Include="Database\IDatabaseAccess.cs" />
     <Compile Include="Events\OnPropertyCange.cs" />
     <Compile Include="GamePlan\GamePlanViewModel.cs" />
     <Compile Include="GamePlan\GamePlanView.xaml.cs">

@@ -5,28 +5,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Games.Plugin.Sudoku.Database;
+using Games.Plugin.Sudoku.Events;
 
 namespace Games.Plugin.Sudoku.Database
 {
-    public class DatabaseAccess : IDatabaseAccess
+    public class DatabaseAccess : OnPropertyCange, IDatabaseAccess
     {
+        private event EventHandler LoadingDone;
         private IDatabase _database;
+        private List<IGamePlanViewModel> _gamePlans;
+        public List<IGamePlanViewModel> GamePlans
+        {
+            get => _gamePlans;
+            private set => ChangedProperty(value, ref _gamePlans);
+        }
+
         public DatabaseAccess(IDatabase database)
         {
             _database = database;
+            LoadDatabaseAsync();
         }
 
-        public List<IGamePlanViewModel> ReadDatabase()
+        public async Task LoadDatabaseAsync()
         {
-            return ReadDatabaseAsync();
+            GamePlans = await LoopThroughDatabaseAsync();
         }
 
         public void AddToDatabase(IGamePlanViewModel gamePlanModel)
         {
             _database.GamePlans.Add(gamePlanModel);
+            GamePlans.Add(gamePlanModel);
         }
 
-        private async Task<List<IGamePlanViewModel>> ReadDatabaseAsync()
+        private async Task<List<IGamePlanViewModel>> LoopThroughDatabaseAsync()
         {
             List<Task<IGamePlanViewModel>> tasks = new List<Task<IGamePlanViewModel>>();
             foreach(IGamePlanViewModel item in _database.GamePlans)
