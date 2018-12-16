@@ -28,8 +28,13 @@ namespace Games.Plugin.Sudoku
 
         public void Run()
         {
-            List<IGamePlanViewModel> _gamePlanViewModels = _databaseAccess.ReadDatabase();
-            _gamePlanViewModel = _gamePlanViewModels.First();
+            _databaseAccess.LoadingDone += ProceedAfterLoading;
+            _databaseAccess.LoadDatabaseAsync();
+        }
+
+        public void ProceedAfterLoading(object sende, EventArgs e)
+        {
+            //here it goes on...
         }
     }
 }

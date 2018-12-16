@@ -9,9 +9,9 @@ using Games.Plugin.Sudoku.Events;
 
 namespace Games.Plugin.Sudoku.Database
 {
-    public class DatabaseAccess : OnPropertyCange, IDatabaseAccess
+    public class DatabaseAccess : OnPropertyCange, IDatabaseAccess, IDatabaseAccess
     {
-        private event EventHandler LoadingDone;
+        public event EventHandler LoadingDone;
         private IDatabase _database;
         private List<IGamePlanViewModel> _gamePlans;
         public List<IGamePlanViewModel> GamePlans
@@ -23,12 +23,15 @@ namespace Games.Plugin.Sudoku.Database
         public DatabaseAccess(IDatabase database)
         {
             _database = database;
-            LoadDatabaseAsync();
         }
 
         public async Task LoadDatabaseAsync()
         {
             GamePlans = await LoopThroughDatabaseAsync();
+            if (LoadingDone == null)
+            {
+                LoadingDone(this, EventArgs.Empty);
+            }
         }
 
         public void AddToDatabase(IGamePlanViewModel gamePlanModel)
@@ -40,9 +43,9 @@ namespace Games.Plugin.Sudoku.Database
         private async Task<List<IGamePlanViewModel>> LoopThroughDatabaseAsync()
         {
             List<Task<IGamePlanViewModel>> tasks = new List<Task<IGamePlanViewModel>>();
-            foreach(IGamePlanViewModel item in _database.GamePlans)
+            foreach (IGamePlanViewModel item in _database.GamePlans)
             {
-                tasks.Add(Task.Run(()=>item));
+                tasks.Add(Task.Run(() => item));
             }
 
             var _gamePlanViewModels = await Task.WhenAll(tasks);
