@@ -52,5 +52,14 @@ namespace Games.Plugin.Sudoku.Database
 
             return _gamePlanViewModels.ToList();
         }
+
+        private async Task<List<IGamePlanViewModel>> LoopThroughDatabaseParallelAsync()
+        {
+            List<IGamePlanViewModel> gamePlans = new List<IGamePlanViewModel>();
+
+            Parallel.ForEach<IGamePlanViewModel>(gamePlans, (item) => gamePlans.Add(item));
+
+            return gamePlans.ToList();
+        }
     }
 }
