@@ -25,7 +25,7 @@ namespace GamesTest.Plugin.Sudoku.Database
 
                 var cls = mock.Create<DatabaseAccess>();
 
-                var actualData = cls.ReadDatabase();
+                var actualData = cls.ReadDatabaseAsync();
                 var expectedData = TestData.GetTestData();
 
                 Assert.AreEqual(expectedData, actualData);

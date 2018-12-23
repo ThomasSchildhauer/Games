@@ -26,7 +26,7 @@ namespace Games.Plugin.Sudoku
             return new GamePlanView(_gamePlanViewModel);
         }
 
-        public async Task Run()
+        public async Task RunAsync()
         {
             _databaseAccess.LoadingDone += ProceedAfterLoading;
             await _databaseAccess.LoadDatabaseAsync();
@@ -34,7 +34,7 @@ namespace Games.Plugin.Sudoku
 
         public void ProceedAfterLoading(object sende, EventArgs e)
         {
-            //here it goes on...
+            //ToDo here it goes on...
 
 
 

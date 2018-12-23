@@ -18,9 +18,9 @@ namespace Games.Plugin.Sudoku
     /// <summary>
     /// Interaction logic for TestView.xaml
     /// </summary>
-    public partial class TestView : Window
+    public partial class GameSudoku : Window
     {
-        public TestView()
+        public GameSudoku()
         {
             InitializeComponent();
             StartSudokuPlugin.Start();

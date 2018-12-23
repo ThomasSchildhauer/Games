@@ -19,7 +19,7 @@ namespace TestConsoleApp
             {
                 var _programm = scope.Resolve<ISudokuPlugin>();
 
-                _programm.Run();
+                _programm.RunAsync();
             }
         }
     }

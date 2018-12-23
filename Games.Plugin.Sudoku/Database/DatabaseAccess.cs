@@ -61,8 +61,18 @@ namespace Games.Plugin.Sudoku.Database
 
             Parallel.ForEach<IGamePlanViewModel>(gamePlans, (item) => gamePlans.Add(item));
 
-            //await is still missing here!
+            //ToDo await is still missing here!
             return gamePlans.ToList();
+        }
+
+        public async Task ShowProgress()
+        {
+            //ToDo Implement This
+        }
+
+        public void CancelLoading()
+        {
+            //ToDo Implement This
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Games.Plugin.Sudoku
             {
                 var app = scope.Resolve<ISudokuPlugin>();
 
-                Task.Run(()=>app.Run());
+                Task.Run(()=>app.RunAsync());
             }
         }
     }

@@ -1,8 +1,11 @@
-﻿namespace Games.Plugin.Sudoku
-{
+﻿using System;
+using System.Threading.Tasks;
 
+namespace Games.Plugin.Sudoku
+{
     public interface ISudokuPlugin
     {
-        void Run();
+        void ProceedAfterLoading(object sende, EventArgs e);
+        Task RunAsync();
     }
 }
