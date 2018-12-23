@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="GamePlan\IGamePlanViewModel.cs" />
     <Compile Include="ISudokuPlugin.cs" />
+    <Compile Include="Selection\GamePlanSelection.cs" />
     <Compile Include="StartSudokuPlugin.cs" />
     <Compile Include="SudokuPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
