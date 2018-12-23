@@ -9,7 +9,7 @@ using Games.Plugin.Sudoku.Events;
 
 namespace Games.Plugin.Sudoku.Database
 {
-    public class DatabaseAccess : OnPropertyCange, IDatabaseAccess, IDatabaseAccess
+    public class DatabaseAccess : OnPropertyCange, IDatabaseAccess
     {
         public event EventHandler LoadingDone;
         private IDatabase _database;
@@ -27,19 +27,21 @@ namespace Games.Plugin.Sudoku.Database
 
         public async Task LoadDatabaseAsync()
         {
-            GamePlans = await LoopThroughDatabaseAsync();
+            GamePlans = await LoopThroughDatabaseParallelAsync();
             if (LoadingDone == null)
             {
                 LoadingDone(this, EventArgs.Empty);
             }
         }
 
-        public void AddToDatabase(IGamePlanViewModel gamePlanModel)
+        public async Task AddToDatabaseAsync(IGamePlanViewModel gamePlanModel)
         {
-            _database.GamePlans.Add(gamePlanModel);
+            await Task.Run(() => _database.GamePlans.Add(gamePlanModel));
             GamePlans.Add(gamePlanModel);
         }
 
+
+        //still here for testing purposes
         private async Task<List<IGamePlanViewModel>> LoopThroughDatabaseAsync()
         {
             List<Task<IGamePlanViewModel>> tasks = new List<Task<IGamePlanViewModel>>();
@@ -59,6 +61,7 @@ namespace Games.Plugin.Sudoku.Database
 
             Parallel.ForEach<IGamePlanViewModel>(gamePlans, (item) => gamePlans.Add(item));
 
+            //await is still missing here!
             return gamePlans.ToList();
         }
     }
