@@ -2,7 +2,7 @@
 {
     public interface IGamePlanViewModel
     {
-        int[,] gamePlan { get; set; }
+        int[,] GamePlan { get; set; }
         string PlanId { get; set; }
     }
 }

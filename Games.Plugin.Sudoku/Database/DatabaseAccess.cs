@@ -28,10 +28,11 @@ namespace Games.Plugin.Sudoku.Database
         public async Task LoadDatabaseAsync()
         {
             GamePlans = await LoopThroughDatabaseParallelAsync();
-            if (LoadingDone == null)
-            {
-                LoadingDone(this, EventArgs.Empty);
-            }
+            //ToDo something throws a System.NullReferenceException
+            //if (LoadingDone == null)
+            //{
+            //    LoadingDone(this, EventArgs.Empty);
+            //}
         }
 
         public async Task AddToDatabaseAsync(IGamePlanViewModel gamePlanModel)
@@ -61,7 +62,11 @@ namespace Games.Plugin.Sudoku.Database
 
             await Task.Run(() =>
             {
-                Parallel.ForEach<IGamePlanViewModel>(gamePlans, (item) => gamePlans.Add(item));
+                Parallel.ForEach<IGamePlanViewModel>(_database.GamePlans, (items) =>
+                {
+                    gamePlans.Add(items);
+                });
+                //Parallel.ForEach<IGamePlanViewModel>(gamePlans, (item) => gamePlans.Add(item));
             });
 
             return gamePlans.ToList();

@@ -30,7 +30,12 @@ namespace GamesTest.Plugin.Sudoku.Database
                 var actualData = cls.GamePlans;
                 var expectedData = TestData.GetTestData();
 
-                Assert.AreEqual(expectedData, actualData);
+                Assert.AreEqual(expectedData.Count, actualData.Count);
+
+                foreach (IGamePlanViewModel item in expectedData)
+                {
+                    Assert.IsTrue(expectedData.Equals(actualData));
+                }
             }
         }
 
