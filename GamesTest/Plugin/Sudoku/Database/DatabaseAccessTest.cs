@@ -5,6 +5,7 @@ using Autofac.Extras.Moq;
 using Games.Plugin.Sudoku.Database;
 using Games.Plugin.Sudoku.GamePlan;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GamesTest.Plugin.Sudoku.Database
 {
@@ -15,7 +16,7 @@ namespace GamesTest.Plugin.Sudoku.Database
     public class DatabaseAccessTest
     {
         [TestMethod]
-        public void ReadDatabase()
+        public async Task LoadDatabase()
         {
             using (var mock = AutoMock.GetLoose())
             {
@@ -25,7 +26,8 @@ namespace GamesTest.Plugin.Sudoku.Database
 
                 var cls = mock.Create<DatabaseAccess>();
 
-                var actualData = cls.ReadDatabaseAsync();
+                await cls.LoadDatabaseAsync();
+                var actualData = cls.GamePlans;
                 var expectedData = TestData.GetTestData();
 
                 Assert.AreEqual(expectedData, actualData);
@@ -33,7 +35,7 @@ namespace GamesTest.Plugin.Sudoku.Database
         }
 
         [TestMethod]
-        public void AddToDatabaseTest()
+        public async Task AddToDatabaseTest()
         {
             using (var mock = AutoMock.GetLoose())
             {
@@ -45,8 +47,9 @@ namespace GamesTest.Plugin.Sudoku.Database
                 var cls = mock.Create<DatabaseAccess>();
                 var expectedData = TestData.GetTestDataWithAdditionalModel();
 
-                cls.AddToDatabase(TestData.addedModel);
-                var actualData = cls.ReadDatabase();
+                await cls.AddToDatabaseAsync(TestData.addedModel);
+                await cls.LoadDatabaseAsync();
+                var actualData = cls.GamePlans;
 
                 Assert.AreEqual(expectedData.Count, actualData.Count);
                 foreach (IGamePlanViewModel item in actualData)
