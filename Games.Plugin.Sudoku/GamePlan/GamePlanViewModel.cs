@@ -1,5 +1,7 @@
 ﻿using Games.Plugin.Sudoku.Events;
+using Games.Plugin.Sudoku.GamePlan.Compare;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,49 +33,33 @@ namespace Games.Plugin.Sudoku.GamePlan
             set => ChangedProperty<int[,]>(value, ref _gameStartView);
         }
 
+        private readonly ICompareGamePlans _compareGamePlans;
+        public ICompareGamePlans CompareGamePlans
+        {
+            get => _compareGamePlans;
+        }
+
+        public GamePlanViewModel(ICompareGamePlans compareGamePlans)
+        {
+            _compareGamePlans = compareGamePlans;
+        }
+
         public override bool Equals(object obj)
         {
             IGamePlanViewModel gamePlanViewModel = obj as IGamePlanViewModel;
-            if (gamePlanViewModel == null ||
-                CompareGamePlans(gamePlanViewModel ||
-                CompareStartViews(gamePlanViewModel))
+            if (gamePlanViewModel == null)
             {
                 return false;
             }
 
-            return true;
+            return TestEquality(this, gamePlanViewModel, _compareGamePlans.CheckEquality);
         }
 
-        private bool CompareGamePlans(IGamePlanViewModel gamePlanViewModel)
+        private bool TestEquality(IGamePlanViewModel gamePlanViewModel1, IGamePlanViewModel gamePlanViewModel2,
+            Func<IGamePlanViewModel, IGamePlanViewModel, bool> compareGamePlans)
         {
-            var gamePlan = gamePlanViewModel.GamePlan;
-            CompareArrays(gamePlan);
+            return compareGamePlans(gamePlanViewModel1, gamePlanViewModel2);
         }
-
-        private bool CompareStartViews()
-        {
-            var gamePlan = gamePlanViewModel.StartView;
-            CompareArrays(gamePlan);
-        }
-
-        //ToDo generic method...
-       private bool<T> CompareArrays(T array)
-           {
-
-            for (int i = 0; i < gamePlan.GetLength(0); i++)
-            {
-                for (int k = 0; k < gamePlan.GetLength(1); k++)
-                {
-                    if (this.GamePlan[i, k] != gamePlan[i, k])
-                    {
-                        return false;
-                    }
-                }
-            }
-
-            return true;
-        }
-
 
         //ToDo is not implemented jet
         public override int GetHashCode()
