@@ -59,6 +59,7 @@
     <Compile Include="Events\OnPropertyCange.cs" />
     <Compile Include="GamePlan\Compare\CompareGamePlans.cs" />
     <Compile Include="GamePlan\Compare\ICompareGamePlans.cs" />
+    <Compile Include="GamePlan\Compare\PrimeNumbers.cs" />
     <Compile Include="GamePlan\GamePlanViewModel.cs" />
     <Compile Include="GamePlan\GamePlanView.xaml.cs">
       <DependentUpon>GamePlanView.xaml</DependentUpon>
