@@ -6,20 +6,39 @@ using System.Threading.Tasks;
 
 namespace Games.Plugin.Sudoku.GamePlan.Compare
 {
-    public class PrimeNumbers
+    public static class PrimeNumbers
     {
-        private List<int> _primeNumbers;
+        private static readonly int _maxNumber;
+        private static List<int> _primeNumbers;
 
-        public PrimeNumbers()
+        public static List<int> CalculatePrimeNumbers(int numberCount)
         {
+            int number = 1;
+            bool isPrimeNumber;
 
-        }
+            do
+            {
+                isPrimeNumber = true;
 
-        public List<int> CalculatePrimeNumbers(int maxNumber)
-        {
+                for (int devider = 1; devider <= number; devider++)
+                {
+                    if ((number % devider == 0) && ((number != devider) && (devider != 1)))
+                    {
+                        isPrimeNumber = false;
+                        break;
+                    }
+                }
+
+                if (isPrimeNumber)
+                {
+                    _primeNumbers.Add(number);
+                }
+
+                number++;
+
+            } while (_primeNumbers.Count < numberCount);
 
             return _primeNumbers;
         }
-
     }
 }
