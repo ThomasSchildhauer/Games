@@ -8,12 +8,12 @@ namespace Games.Plugin.Sudoku.GamePlan.Compare
 {
     public static class PrimeNumbers
     {
-        private static List<int> _primeNumbers = new List<int>();
 
         public static List<int> CalculatePrimeNumbers(int numberCount)
         {
             int number = 1;
             bool isPrimeNumber;
+            List<int> _primeNumbers = new List<int>();
 
             do
             {
