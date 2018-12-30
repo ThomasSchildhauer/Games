@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Games.Plugin.Sudoku.GamePlan;
+using Games.Plugin.Sudoku.GamePlan.Compare;
 
 namespace GamesTest.Plugin.Sudoku.Database
 {
@@ -8,7 +9,8 @@ namespace GamesTest.Plugin.Sudoku.Database
     {
         private static readonly List<IGamePlanViewModel> _gamePlanModels = new List<IGamePlanViewModel>
             {
-            new GamePlanViewModel
+            
+            new GamePlanViewModel(new CompareGamePlans())
             {
                 PlanId = "1",
                 GamePlan = new int[9,9]
@@ -26,7 +28,7 @@ namespace GamesTest.Plugin.Sudoku.Database
                 
             },
 
-            new GamePlanViewModel
+            new GamePlanViewModel(new CompareGamePlans())
             {
                 PlanId = "2",
                 GamePlan = new int[9, 9]
@@ -49,7 +51,7 @@ namespace GamesTest.Plugin.Sudoku.Database
             return _gamePlanModels;
         }
 
-        public static readonly GamePlanViewModel addedModel = new GamePlanViewModel
+        public static readonly GamePlanViewModel addedModel = new GamePlanViewModel(new CompareGamePlans())
         {
             PlanId = "3",
             GamePlan = new int[9, 9]

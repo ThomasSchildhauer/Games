@@ -11,7 +11,9 @@ namespace Games.Plugin.Sudoku.GamePlan
 {
     public class GamePlanViewModel : OnPropertyCange, IGamePlanViewModel
     {
+        //Variables and Properties
         private string _planId;
+        private readonly ICompareGamePlans _compareGamePlans;
         public string PlanId
         {
             get => _planId;
@@ -26,24 +28,21 @@ namespace Games.Plugin.Sudoku.GamePlan
         }
 
         private int[,] _gameStartView;
-
         public int[,] GameStartView
         {
             get => _gameStartView;
             set => ChangedProperty<int[,]>(value, ref _gameStartView);
         }
 
-        private readonly ICompareGamePlans _compareGamePlans;
-        public ICompareGamePlans CompareGamePlans
-        {
-            get => _compareGamePlans;
-        }
 
+        //Constructor
         public GamePlanViewModel(ICompareGamePlans compareGamePlans)
         {
             _compareGamePlans = compareGamePlans;
         }
 
+
+        //Methods
         public override bool Equals(object obj)
         {
             IGamePlanViewModel gamePlanViewModel = obj as IGamePlanViewModel;
