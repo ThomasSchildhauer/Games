@@ -8,8 +8,7 @@ namespace Games.Plugin.Sudoku.GamePlan.Compare
 {
     public static class PrimeNumbers
     {
-        private static readonly int _maxNumber;
-        private static List<int> _primeNumbers;
+        private static List<int> _primeNumbers = new List<int>();
 
         public static List<int> CalculatePrimeNumbers(int numberCount)
         {
