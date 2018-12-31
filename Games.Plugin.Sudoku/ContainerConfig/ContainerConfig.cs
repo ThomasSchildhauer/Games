@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Games.Plugin.Sudoku.Database;
 using Games.Plugin.Sudoku.GamePlan;
+using Games.Plugin.Sudoku.GamePlan.Compare;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace Games.Plugin.Sudoku.ContainerConfig
             builder.RegisterType<DatabaseAccess>().As<IDatabaseAccess>();
             builder.RegisterType<TestDatabase>().As<IDatabase>();
             builder.RegisterType<GamePlanViewModel>().As<IGamePlanViewModel>();
+            builder.RegisterType<HashValues>().As<IHashValues>();
+            builder.RegisterType<CompareGamePlans>().As<ICompareGamePlans>();
 
             return builder.Build();
         }

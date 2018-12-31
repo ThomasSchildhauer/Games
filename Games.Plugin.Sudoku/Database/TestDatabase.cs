@@ -12,7 +12,7 @@ namespace Games.Plugin.Sudoku.Database
     {
         private List<IGamePlanViewModel> _gamePlan = new List<IGamePlanViewModel>
         {
-            new GamePlanViewModel(new CompareGamePlans())
+            new GamePlanViewModel(new CompareGamePlans(), new HashValues())
             {
                 PlanId = "1",
                 GamePlan = new int[9,9]
@@ -29,7 +29,7 @@ namespace Games.Plugin.Sudoku.Database
                 }
             },
 
-            new GamePlanViewModel(new CompareGamePlans())
+            new GamePlanViewModel(new CompareGamePlans(), new HashValues())
             {
                 PlanId = "2",
                 GamePlan = new int[9, 9]

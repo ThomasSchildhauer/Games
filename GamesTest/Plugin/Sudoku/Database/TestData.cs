@@ -10,7 +10,7 @@ namespace GamesTest.Plugin.Sudoku.Database
         private static readonly List<IGamePlanViewModel> _gamePlanModels = new List<IGamePlanViewModel>
             {
             
-            new GamePlanViewModel(new CompareGamePlans())
+            new GamePlanViewModel(new CompareGamePlans(), new HashValues())
             {
                 PlanId = "1",
                 GamePlan = new int[9,9]
@@ -28,7 +28,7 @@ namespace GamesTest.Plugin.Sudoku.Database
                 
             },
 
-            new GamePlanViewModel(new CompareGamePlans())
+            new GamePlanViewModel(new CompareGamePlans(), new HashValues())
             {
                 PlanId = "2",
                 GamePlan = new int[9, 9]
@@ -51,7 +51,7 @@ namespace GamesTest.Plugin.Sudoku.Database
             return _gamePlanModels;
         }
 
-        public static readonly GamePlanViewModel addedModel = new GamePlanViewModel(new CompareGamePlans())
+        public static readonly GamePlanViewModel addedModel = new GamePlanViewModel(new CompareGamePlans(), new HashValues())
         {
             PlanId = "3",
             GamePlan = new int[9, 9]
