@@ -14,6 +14,7 @@ namespace Games.Plugin.Sudoku.GamePlan
         //Variables and Properties
         private string _planId;
         private readonly ICompareGamePlans _compareGamePlans;
+        private readonly IHashValues _hashValues;
         public string PlanId
         {
             get => _planId;
@@ -27,18 +28,19 @@ namespace Games.Plugin.Sudoku.GamePlan
             set => ChangedProperty<int[,]>(value, ref _gamePlan);
         }
 
-        private int[,] _gameStartView;
-        public int[,] GameStartView
+        private bool[,] _gameStartView;
+        public bool[,] GameStartView
         {
             get => _gameStartView;
-            set => ChangedProperty<int[,]>(value, ref _gameStartView);
+            set => ChangedProperty<bool[,]>(value, ref _gameStartView);
         }
 
 
         //Constructor
-        public GamePlanViewModel(ICompareGamePlans compareGamePlans)
+        public GamePlanViewModel(ICompareGamePlans compareGamePlans, IHashValues hashValues)
         {
             _compareGamePlans = compareGamePlans;
+            _hashValues = hashValues;
         }
 
 
@@ -60,10 +62,14 @@ namespace Games.Plugin.Sudoku.GamePlan
             return compareGamePlans(gamePlanViewModel1, gamePlanViewModel2);
         }
 
-        //ToDo is not implemented jet
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return CalculateHashCode(_hashValues.GetHashCodeGamePlanViewModel);
+        }
+
+        private int CalculateHashCode(Func<GamePlanViewModel, int> function)
+        {
+            return function(this);
         }
 
         //ToDo overload of == and != Operator has to be implemented!

@@ -12,7 +12,7 @@ namespace Games.Plugin.Sudoku.GamePlan.Compare
         public bool CheckEquality(IGamePlanViewModel gamePlanViewModel1, IGamePlanViewModel gamePlanViewModel2)
         {
             if (CompareArrays<int>(gamePlanViewModel1.GamePlan, gamePlanViewModel2.GamePlan) &&
-                CompareArrays<int>(gamePlanViewModel1.GameStartView, gamePlanViewModel2.GameStartView) &&
+                CompareArrays<bool>(gamePlanViewModel1.GameStartView, gamePlanViewModel2.GameStartView) &&
                 CompareIds(gamePlanViewModel1.PlanId, gamePlanViewModel2.PlanId))
             {
                 return true;
