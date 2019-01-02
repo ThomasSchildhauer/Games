@@ -9,7 +9,7 @@ namespace GamesTest.Plugin.Sudoku.Database
     {
         private static readonly List<IGamePlanViewModel> _gamePlanModels = new List<IGamePlanViewModel>
             {
-            
+
             new GamePlanViewModel(new CompareGamePlans(), new HashValues())
             {
                 PlanId = "1",
@@ -25,7 +25,7 @@ namespace GamesTest.Plugin.Sudoku.Database
                     { 1,2,3,4,5,6,7,8,9 },
                     { 1,2,3,4,5,6,7,8,9 }
                 }
-                
+
             },
 
             new GamePlanViewModel(new CompareGamePlans(), new HashValues())
@@ -75,5 +75,98 @@ namespace GamesTest.Plugin.Sudoku.Database
             _gamePlanModelsWithAddedModel.Add(addedModel);
             return _gamePlanModelsWithAddedModel;
         }
+
+        public static IGamePlanViewModel gamePlanViewModelEqualsTrue1 = new GamePlanViewModel(new CompareGamePlans(), new HashValues())
+        {
+            PlanId = "1",
+
+            GamePlan = new int[9, 9]
+                {
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 }
+                },
+
+            GameStartView = new bool[9, 9]
+                {
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                }
+        };
+
+        public static IGamePlanViewModel gamePlanViewModelEqualsTrue2 = new GamePlanViewModel(new CompareGamePlans(), new HashValues())
+        {
+            PlanId = "1",
+
+            GamePlan = new int[9, 9]
+            {
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 }
+            },
+
+            GameStartView = new bool[9, 9]
+            {
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+            }
+        };
+
+        public static IGamePlanViewModel gamePlanViewModelEqualsFalse = new GamePlanViewModel(new CompareGamePlans(), new HashValues())
+        {
+            PlanId = "2",
+
+            GamePlan = new int[9, 9]
+            {
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,9 },
+                    { 1,2,3,4,5,6,7,8,1 }
+            },
+
+            GameStartView = new bool[9, 9]
+            {
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, false },
+                    { false, false, false, false, false, false, false, false, true },
+            }
+        };
     }
 }

@@ -12,9 +12,10 @@ namespace Games.Plugin.Sudoku.GamePlan
     public class GamePlanViewModel : OnPropertyCange, IGamePlanViewModel
     {
         //Variables and Properties
-        private string _planId;
         private readonly ICompareGamePlans _compareGamePlans;
         private readonly IHashValues _hashValues;
+
+        private string _planId;
         public string PlanId
         {
             get => _planId;
