@@ -12,7 +12,8 @@ namespace Games.Plugin.Sudoku.Database
         event EventHandler LoadingDone;
 
         Task AddToDatabaseAsync(IGamePlanViewModel gamePlanModel);
-
+        void CancelLoading();
         Task LoadDatabaseAsync();
+        Task ShowProgress();
     }
 }

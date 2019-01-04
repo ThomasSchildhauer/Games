@@ -23,6 +23,7 @@ namespace Games
     {
         public MainWindow()
         {
+            //always get a null reference exception here when running the app. maybe it has something to do with static classes and / or autofac with incorrect interfaces...
             InitializeComponent();
         }
     }
