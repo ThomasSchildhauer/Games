@@ -28,7 +28,7 @@ namespace Games.Plugin.Sudoku.GamePlan.Compare
                 {
                     for (int i = 0; i < array1.GetLength(0); i++)
                     {
-                        for (int k = 0; k < array1.GetLength(1); i++)
+                        for (int k = 0; k < array1.GetLength(1); k++)
                         {
                             if (!array1[i, k].Equals(array2[i, k]))
                             {
