@@ -38,7 +38,7 @@ namespace Games.Plugin.Sudoku.Database
         public async Task AddToDatabaseAsync(IGamePlanViewModel gamePlanModel)
         {
             await Task.Run(() => _database.GamePlans.Add(gamePlanModel));
-            GamePlans.Add(gamePlanModel);
+            //GamePlans.Add(gamePlanModel);
         }
 
 

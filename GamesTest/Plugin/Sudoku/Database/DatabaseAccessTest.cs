@@ -32,9 +32,9 @@ namespace GamesTest.Plugin.Sudoku.Database
 
                 Assert.AreEqual(expectedData.Count, actualData.Count);
 
-                foreach (IGamePlanViewModel item in expectedData)
+                for (int i = 0; i < expectedData.Count; i++)
                 {
-                    Assert.IsTrue(expectedData.Equals(actualData));
+                    Assert.IsTrue(expectedData[i].Equals(actualData[i]));
                 }
             }
         }
