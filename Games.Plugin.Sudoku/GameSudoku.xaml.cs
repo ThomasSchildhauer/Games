@@ -18,7 +18,7 @@ namespace Games.Plugin.Sudoku
     /// <summary>
     /// Interaction logic for TestView.xaml
     /// </summary>
-    public partial class GameSudoku : Window
+    public partial class GameSudoku : UserControl
     {
         public GameSudoku()
         {
