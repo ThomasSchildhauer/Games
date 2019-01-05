@@ -85,6 +85,7 @@
   <ItemGroup>
     <Compile Include="Plugin\Sudoku\Database\DatabaseAccessTest.cs" />
     <Compile Include="Plugin\Sudoku\Database\TestData.cs" />
+    <Compile Include="Plugin\Sudoku\GamePlan\Compare\HashValuesTest.cs" />
     <Compile Include="Plugin\Sudoku\GamePlan\Compare\PrimeNumbersTest.cs" />
     <Compile Include="Plugin\Sudoku\GamePlan\GamePlanViewModelTest.cs" />
     <Compile Include="Plugin\Sudoku\SudokuTest.cs" />
