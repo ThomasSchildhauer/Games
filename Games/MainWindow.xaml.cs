@@ -23,6 +23,7 @@ namespace Games
     /// </summary>
     public partial class MainWindow : Window
     {
+        //ToDo have to update this to .Net 4.6
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public MainWindow()
