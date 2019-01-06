@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+
 namespace Games
 {
     /// <summary>
@@ -21,10 +23,13 @@ namespace Games
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public MainWindow()
         {
-            //always get a null reference exception here when running the app. maybe it has something to do with static classes and / or autofac with incorrect interfaces...
+            log.Debug("Test Message 1");
             InitializeComponent();
+            log.Debug("Test Message 2");
         }
     }
 }
