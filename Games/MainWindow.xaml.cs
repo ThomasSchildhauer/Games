@@ -1,4 +1,5 @@
-﻿using Games.Plugin.Sudoku;
+﻿using Base.LogHelper;
+using Games.Plugin.Sudoku;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace Games
 
         public MainWindow()
         {
+            log.Debug("##################################################");
             log.Debug("Test Message 1");
             InitializeComponent();
             log.Debug("Test Message 2");
