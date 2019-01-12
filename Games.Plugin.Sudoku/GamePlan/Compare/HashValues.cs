@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Base.LogHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +10,19 @@ namespace Games.Plugin.Sudoku.GamePlan.Compare
     public class HashValues : IHashValues
     {
         //Variables
+        private static readonly log4net.ILog log = LogHelper.GetNewLogger();
+
         private IGamePlanViewModel _gamePlanViewModel;
 
 
         public int GetHashCodeGamePlanViewModel(IGamePlanViewModel gamePlanViewModel)
         {
             _gamePlanViewModel = gamePlanViewModel;
+
             int hashStartView = GetHashCodeStartView();
+
             int hashPlanId = _gamePlanViewModel.PlanId.GetHashCode();
+
             int hashGamePlan = GetHashCodeGamePlan();
 
             return hashStartView + 100 * (hashPlanId + hashGamePlan);
@@ -26,6 +32,7 @@ namespace Games.Plugin.Sudoku.GamePlan.Compare
         private int GetHashCodeGamePlan()
         {
             var gamePlan = _gamePlanViewModel.GamePlan;
+
             int hashCode = 0;
 
             int primeNumberCount = (int)gamePlan.GetLongLength(0) * (int)gamePlan.GetLongLength(1);
@@ -40,15 +47,22 @@ namespace Games.Plugin.Sudoku.GamePlan.Compare
                 }
             }
 
+            log.Debug(string.Format("GetHashCodeGamePlan: {0}", hashCode.ToString()));
+
             return hashCode;
         }
 
         private int GetHashCodeStartView()
         {
             var gameStartView = _gamePlanViewModel.GameStartView;
+
             var fieldCount = from bool item in gameStartView where item == true select item;
 
-            return fieldCount.Count();
+            var count = fieldCount.Count();
+
+            log.Debug(string.Format("GetHashCodeStartView: {0}", count.ToString()));
+
+            return count;
         }
     }
 }

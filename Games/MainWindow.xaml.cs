@@ -14,7 +14,7 @@ namespace Games
 
         public MainWindow()
         {
-            log.Debug("StartProgramm");
+            log.Debug("Start Games Programm");
             InitializeComponent();
         }
     }

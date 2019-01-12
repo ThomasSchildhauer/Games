@@ -1,4 +1,5 @@
-﻿using Games.Plugin.Sudoku.Database;
+﻿using Base.LogHelper;
+using Games.Plugin.Sudoku.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace Games.Plugin.Sudoku.Selection
 {
     public class GamePlanSelection
     {
+        private static readonly log4net.ILog log = LogHelper.GetNewLogger();
+
         private IDatabaseAccess _databaseAccess;
 
         GamePlanSelection(IDatabaseAccess databaseAccess)
@@ -19,7 +22,7 @@ namespace Games.Plugin.Sudoku.Selection
 
         private void FetchGamePlanViewModels(object s, EventArgs a)
         {
-
+            log.Debug("FetchGamePlanViewModels: Has to be Coded first...");
         }
     }
 }

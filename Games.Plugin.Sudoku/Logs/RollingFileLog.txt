@@ -2,3 +2,5 @@
 19:35:13,194 [G:\S\Games\Games\MainWindow.xaml.cs] DEBUG - Test Message 1
 19:35:13,270 [Games.Plugin.Sudoku.StartSudokuPlugin] DEBUG - Test in Sudoku Plugin
 19:35:13,334 [G:\S\Games\Games\MainWindow.xaml.cs] DEBUG - Test Message 2
+22:36:09,719 [G:\S\Games\Games\MainWindow.xaml.cs] DEBUG - StartProgramm
+22:36:10,063 [G:\S\Games\Games.Plugin.Sudoku\StartSudokuPlugin.cs] DEBUG - Test in Sudoku Plugin########################################

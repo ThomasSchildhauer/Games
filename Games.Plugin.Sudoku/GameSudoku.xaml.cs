@@ -23,6 +23,7 @@ namespace Games.Plugin.Sudoku
         public GameSudoku()
         {
             InitializeComponent();
+
             StartSudokuPlugin.Start();
         }
     }
