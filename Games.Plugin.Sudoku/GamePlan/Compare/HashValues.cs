@@ -19,13 +19,17 @@ namespace Games.Plugin.Sudoku.GamePlan.Compare
         {
             _gamePlanViewModel = gamePlanViewModel;
 
-            int hashStartView = GetHashCodeStartView();
+            var hashStartView = GetHashCodeStartView();
 
-            int hashPlanId = _gamePlanViewModel.PlanId.GetHashCode();
+            var hashPlanId = _gamePlanViewModel.PlanId.GetHashCode();
 
-            int hashGamePlan = GetHashCodeGamePlan();
+            var hashGamePlan = GetHashCodeGamePlan();
 
-            return hashStartView + 100 * (hashPlanId + hashGamePlan);
+            var hashCode = hashStartView + 100 * (hashPlanId + hashGamePlan);
+
+            log.Debug(string.Format("GetHashCodeGamePlan: {0}", hashCode.ToString()));
+
+            return hashCode;
         }
 
         //Methods
