@@ -9,7 +9,7 @@ namespace Base.LogHelper
 {
     public class LogHelper
     {
-        public static log4net.ILog GetLogger([CallerFilePath]string filename = "")
+        public static log4net.ILog GetNewLogger([CallerFilePath]string filename = "")
         {
             return log4net.LogManager.GetLogger(filename);
         }

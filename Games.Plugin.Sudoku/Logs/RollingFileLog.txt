@@ -1,0 +1,4 @@
+19:35:13,185 [G:\S\Games\Games\MainWindow.xaml.cs] ERROR - ##################################################
+19:35:13,194 [G:\S\Games\Games\MainWindow.xaml.cs] DEBUG - Test Message 1
+19:35:13,270 [Games.Plugin.Sudoku.StartSudokuPlugin] DEBUG - Test in Sudoku Plugin
+19:35:13,334 [G:\S\Games\Games\MainWindow.xaml.cs] DEBUG - Test Message 2

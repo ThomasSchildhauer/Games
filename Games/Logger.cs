@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace Games
 {
 
-    public class LoggerTest
+    public class Logger
     {
-        public static log4net.ILog GetLogger([CallerFilePath]string filename = "")
+        public static log4net.ILog GetNewLogger([CallerFilePath]string filename = "")
         {
             return log4net.LogManager.GetLogger(filename);
         }
