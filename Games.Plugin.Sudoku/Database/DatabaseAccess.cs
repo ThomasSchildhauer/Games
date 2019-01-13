@@ -44,6 +44,8 @@ namespace Games.Plugin.Sudoku.Database
             //{
             //    LoadingDone(this, EventArgs.Empty);
             //}
+            //Die Lösung ist glaub ich wie folgt:
+            //LoadingDone?.Invoke(this, EventArgs.Empty)
         }
 
         public async Task AddToDatabaseAsync(IGamePlanViewModel gamePlanModel)

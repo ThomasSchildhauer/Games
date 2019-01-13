@@ -6,8 +6,26 @@
         xmlns:sudoku="clr-namespace:Games.Plugin.Sudoku.GamePlan"
              xmlns:local="clr-namespace:Games.Plugin.Sudoku"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="800">
-    <Grid>
-        <sudoku:GamePlanView/>
+             d:DesignHeight="1200" d:DesignWidth="1200">
+    <Grid Height="1200" Width="1200">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+        <Button x:Name="NewGame" Content="New Game" FontSize="50" Grid.Row="1" Margin="20"/>
+        </Grid>
+        <sudoku:GamePlanView Grid.Row="1" Grid.Column="1"/>
     </Grid>
 </UserControl>

@@ -71,6 +71,10 @@
     </Compile>
     <Compile Include="GamePlan\IGamePlanViewModel.cs" />
     <Compile Include="ISudokuPlugin.cs" />
+    <Compile Include="NewGame\NewGameView.xaml.cs">
+      <DependentUpon>NewGameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewGame\NewGameViewModel.cs" />
     <Compile Include="Selection\GamePlanSelection.cs" />
     <Compile Include="StartSudokuPlugin.cs" />
     <Compile Include="SudokuPlugin.cs" />
@@ -89,6 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GameSudoku.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewGame\NewGameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
