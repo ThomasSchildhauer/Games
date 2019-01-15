@@ -26,30 +26,5 @@ namespace Games.Plugin.Sudoku.NewGame
 
             DataContext = new NewGameViewModel();
         }
-
-        private void Cancle_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Hard_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Middle_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Easy_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Ok_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
