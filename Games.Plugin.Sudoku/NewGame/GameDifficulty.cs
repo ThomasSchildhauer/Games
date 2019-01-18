@@ -8,6 +8,11 @@ namespace Games.Plugin.Sudoku.NewGame
 {
     public class GameDifficulty
     {
-        enum ....
+        public enum Difficulty : int
+        {
+            Hard = 0,
+            Middle = 1,
+            Easy = 2
+        };
     }
 }

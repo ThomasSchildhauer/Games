@@ -11,37 +11,45 @@ namespace Games.Plugin.Sudoku.NewGame
 {
     public class NewGameViewModel : OnPropertyCange
     {
-        private int _difficulty;
         private bool _canExecute = true;
+        private Window _window;
+        public event EventHandler SetDifficulty;
+        private int _difficulty;
 
-        private ICommand _buttonClickHard;
+        public int SelectedGameDifficulty
+        {
+            get => _difficulty;
+            set => ChangedProperty(value, ref _difficulty);
+        }
+
         public ICommand ButtonClickHard
         {
-            get => new CommandHandler(() => _difficulty = 0, _canExecute);
+            get => new CommandHandler(() => SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Hard, _canExecute);
         }
-
-        private ICommand _buttonClickMiddle;
+       
         public ICommand ButtonClickMiddle
         {
-            get => new CommandHandler(() => _difficulty = 1, _canExecute);
+            get => new CommandHandler(() => SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Middle, _canExecute);
         }
 
-        private ICommand _buttonClickEasy;
         public ICommand ButtonClickEasy
         {
-            get => new CommandHandler(() => _difficulty = 2, _canExecute);
+            get => new CommandHandler(() => SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Easy, _canExecute);
         }
 
-        private ICommand _buttonClickOk;
         public ICommand ButtonClickOk
         {
-            get => new CommandHandler(??, _canExecute);
+            get => new CommandHandler(()=> 
+            {
+                SetDifficulty.Invoke(this, EventArgs.Empty);
+                SystemCommands.CloseWindow(_window);
+            }
+            , _canExecute);
         }
 
-        private ICommand _buttonClickCancel;
         public ICommand ButtonClickCancel
         {
-            get => new CommandHandler(??, _canExecute);
+            get => new CommandHandler(()=> SystemCommands.CloseWindow(_window), _canExecute);
         }
 
         public int Difficulty
@@ -51,14 +59,9 @@ namespace Games.Plugin.Sudoku.NewGame
             set => ChangedProperty(value, ref _difficulty);
         }
 
-        public NewGameViewModel()
+        public NewGameViewModel(Window window)
         {
-
-        }
-
-        private void SetDifficultyToHard(object sender, RoutedEventArgs e)
-        {
-
+            _window = window;
         }
     }
 }
