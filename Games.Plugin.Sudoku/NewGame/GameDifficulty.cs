@@ -12,7 +12,8 @@ namespace Games.Plugin.Sudoku.NewGame
         {
             Hard = 0,
             Middle = 1,
-            Easy = 2
+            Easy = 2,
+            Nothing = 3
         };
     }
 }

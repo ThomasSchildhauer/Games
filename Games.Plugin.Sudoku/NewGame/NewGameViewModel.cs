@@ -22,24 +22,48 @@ namespace Games.Plugin.Sudoku.NewGame
             set => ChangedProperty(value, ref _difficulty);
         }
 
+        private bool _okButtonIsEnabled;
+
+        public bool OkButtonIsEnabled
+        {
+            get => _okButtonIsEnabled;
+            set => ChangedProperty(value, ref _okButtonIsEnabled);
+        }
+
+
         public ICommand ButtonClickHard
         {
-            get => new CommandHandler(() => SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Hard, _canExecute);
+            get => new CommandHandler(() =>
+            {
+                SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Hard;
+                OkButtonIsEnabled = true;
+            }
+            , _canExecute);
         }
-       
+
         public ICommand ButtonClickMiddle
         {
-            get => new CommandHandler(() => SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Middle, _canExecute);
+            get => new CommandHandler(() =>
+            {
+                SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Middle;
+                OkButtonIsEnabled = true;
+            }
+            , _canExecute);
         }
 
         public ICommand ButtonClickEasy
         {
-            get => new CommandHandler(() => SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Easy, _canExecute);
+            get => new CommandHandler(() =>
+            {
+                SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Easy;
+                OkButtonIsEnabled = true;
+            }
+            , _canExecute);
         }
 
         public ICommand ButtonClickOk
         {
-            get => new CommandHandler(()=> 
+            get => new CommandHandler(() =>
             {
                 SetDifficulty.Invoke(this, EventArgs.Empty);
                 SystemCommands.CloseWindow(_window);
@@ -49,7 +73,12 @@ namespace Games.Plugin.Sudoku.NewGame
 
         public ICommand ButtonClickCancel
         {
-            get => new CommandHandler(()=> SystemCommands.CloseWindow(_window), _canExecute);
+            get => new CommandHandler(() =>
+            {
+                SystemCommands.CloseWindow(_window);
+                SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Nothing;
+            }
+            , _canExecute);
         }
 
         public int Difficulty
