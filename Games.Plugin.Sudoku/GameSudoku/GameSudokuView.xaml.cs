@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Games.Plugin.Sudoku
+namespace Games.Plugin.Sudoku.GameSudoku
 {
     /// <summary>
     /// Interaction logic for TestView.xaml
     /// </summary>
-    public partial class GameSudoku : UserControl
+    public partial class GameSudokuView : UserControl
     {
-        public GameSudoku()
+        public GameSudokuView()
         {
             InitializeComponent();
 

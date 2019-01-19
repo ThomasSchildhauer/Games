@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Games.Plugin.Sudoku.NewGame
+namespace Games.Plugin.Sudoku.GameSudoku.NewGame
 {
     public class GameDifficulty
     {
         public enum Difficulty : int
         {
-            Hard = 0,
-            Middle = 1,
-            Easy = 2,
-            Nothing = 3
+            Default = 0,
+            Hard = 1,
+            Middle = 2,
+            Easy = 3
         };
     }
 }

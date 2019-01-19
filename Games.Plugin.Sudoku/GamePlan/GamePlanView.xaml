@@ -30,6 +30,5 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding PlanId, FallbackValue=3}" FontSize="100" Background="Yellow"/>
-        <Button Grid.Column="2" Grid.Row="2" Content="2" FontSize="80"/>
     </Grid>
 </UserControl>

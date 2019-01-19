@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Games.Plugin.Sudoku.NewGame
+namespace Games.Plugin.Sudoku.GameSudoku.NewGame
 {
     /// <summary>
     /// Interaction logic for NewGameView.xaml

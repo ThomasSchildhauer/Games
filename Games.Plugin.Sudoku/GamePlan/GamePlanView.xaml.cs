@@ -29,7 +29,5 @@ namespace Games.Plugin.Sudoku.GamePlan
         {
             DataContext = gamePlanViewModel;
         }
-
-        
     }
 }

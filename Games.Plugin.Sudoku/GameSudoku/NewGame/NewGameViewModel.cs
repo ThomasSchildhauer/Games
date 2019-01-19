@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Games.Plugin.Sudoku.NewGame
+namespace Games.Plugin.Sudoku.GameSudoku.NewGame
 {
     public class NewGameViewModel : OnPropertyCange
     {
@@ -76,7 +76,7 @@ namespace Games.Plugin.Sudoku.NewGame
             get => new CommandHandler(() =>
             {
                 SystemCommands.CloseWindow(_window);
-                SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Nothing;
+                SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Default;
             }
             , _canExecute);
         }

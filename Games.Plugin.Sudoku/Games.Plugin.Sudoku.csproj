@@ -70,20 +70,21 @@
       <DependentUpon>GamePlanView.xaml</DependentUpon>
     </Compile>
     <Compile Include="GamePlan\IGamePlanViewModel.cs" />
+    <Compile Include="GameSudoku\GameSudokuViewModel.cs" />
     <Compile Include="ISudokuPlugin.cs" />
-    <Compile Include="NewGame\CommandHandler.cs" />
-    <Compile Include="NewGame\GameDifficulty.cs" />
-    <Compile Include="NewGame\NewGameView.xaml.cs">
+    <Compile Include="GameSudoku\NewGame\CommandHandler.cs" />
+    <Compile Include="GameSudoku\NewGame\GameDifficulty.cs" />
+    <Compile Include="GameSudoku\NewGame\NewGameView.xaml.cs">
       <DependentUpon>NewGameView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewGame\NewGameViewModel.cs" />
+    <Compile Include="GameSudoku\NewGame\NewGameViewModel.cs" />
     <Compile Include="Selection\GamePlanSelection.cs" />
     <Compile Include="StartSudokuPlugin.cs" />
     <Compile Include="SudokuPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Database\TestDatabase.cs" />
-    <Compile Include="GameSudoku.xaml.cs">
-      <DependentUpon>GameSudoku.xaml</DependentUpon>
+    <Compile Include="GameSudoku\GameSudokuView.xaml.cs">
+      <DependentUpon>GameSudokuView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -94,11 +95,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GameSudoku.xaml">
+    <Page Include="GameSudoku\GameSudokuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NewGame\NewGameView.xaml">
+    <Page Include="GameSudoku\NewGame\NewGameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
