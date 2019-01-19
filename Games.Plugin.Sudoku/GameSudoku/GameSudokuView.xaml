@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="Games.Plugin.Sudoku.GameSudoku.GameSudokuView"
+﻿<Page x:Class="Games.Plugin.Sudoku.GameSudoku.GameSudokuView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-        xmlns:sudoku="clr-namespace:Games.Plugin.Sudoku.GamePlan"
+             xmlns:sudoku="clr-namespace:Games.Plugin.Sudoku.GamePlan"
              xmlns:local="clr-namespace:Games.Plugin.Sudoku.GameSudoku"
              mc:Ignorable="d" 
              d:DesignHeight="1200" d:DesignWidth="1200">
@@ -28,4 +28,4 @@
         </Grid>
         <sudoku:GamePlanView Grid.Row="1" Grid.Column="1"/>
     </Grid>
-</UserControl>
+</Page>

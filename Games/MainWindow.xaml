@@ -7,7 +7,5 @@
         xmlns:sudoku="clr-namespace:Games.Plugin.Sudoku.GameSudoku;assembly=Games.Plugin.Sudoku" 
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="800">
-    <Grid Width="200" Height="200">
-        <sudoku:GameSudokuView Height="400" Width="400"/>
-    </Grid>
+    <sudoku:GameSudokuView Height="400" Width="400" Visibility="Visible" />
 </Window>
