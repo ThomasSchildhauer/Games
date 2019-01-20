@@ -24,6 +24,8 @@ namespace Games.Plugin.Sudoku
             _gamePlanViewModel = gamePlanViewModel;
 
             _gamePlanView = CreateGamePlanView();
+
+            _gamePlanView.BeginInit();
         }
 
         private GamePlanView CreateGamePlanView()
@@ -32,6 +34,8 @@ namespace Games.Plugin.Sudoku
 
             return new GamePlanView(_gamePlanViewModel);
         }
+
+
 
         public async Task RunAsync()
         {
