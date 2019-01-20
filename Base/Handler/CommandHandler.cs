@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Games.Plugin.Sudoku.GameSudoku.NewGame
+namespace Base.Handler
 {
     public class CommandHandler : ICommand
     {

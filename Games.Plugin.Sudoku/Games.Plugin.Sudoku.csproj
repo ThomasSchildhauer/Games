@@ -72,7 +72,6 @@
     <Compile Include="GamePlan\IGamePlanViewModel.cs" />
     <Compile Include="GameSudoku\GameSudokuViewModel.cs" />
     <Compile Include="ISudokuPlugin.cs" />
-    <Compile Include="GameSudoku\NewGame\CommandHandler.cs" />
     <Compile Include="GameSudoku\NewGame\GameDifficulty.cs" />
     <Compile Include="GameSudoku\NewGame\NewGameView.xaml.cs">
       <DependentUpon>NewGameView.xaml</DependentUpon>
