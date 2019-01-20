@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace Games.Plugin.Sudoku.GameSudoku.NewGame
 {
-    public class NewGameViewModel : OnPropertyCange
+    public class NewGameViewModel : OnPropertyCange, INewGameViewModel
     {
         private bool _canExecute = true;
         private Window _window;
