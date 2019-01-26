@@ -11,12 +11,14 @@ using System.Windows.Input;
 
 namespace Games.Plugin.Sudoku.GameSudoku
 {
-    public class GameSudokuViewModel : OnPropertyCange
+    public class GameSudokuViewModel : OnPropertyCange, IGameSudokuViewModel
     {
+        public int MyProperty { get; set; }
         //ToDo has to be refactored
         public ICommand NewGameCommand = new CommandHandler(()=>new NewGameView(new NewGameViewModel(new Window())).InitializeComponent(), true);
         public GameSudokuViewModel()
         {
+
         }
     }
 }

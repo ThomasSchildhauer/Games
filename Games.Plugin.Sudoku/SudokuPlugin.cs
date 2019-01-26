@@ -1,6 +1,7 @@
 ﻿using Base.LogHelper;
 using Games.Plugin.Sudoku.Database;
 using Games.Plugin.Sudoku.GamePlan;
+using Games.Plugin.Sudoku.GameSudoku;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,26 +14,47 @@ namespace Games.Plugin.Sudoku
     {
         private static readonly log4net.ILog log = LogHelper.GetNewLogger();
         private IDatabaseAccess _databaseAccess;
-        //private List<IGamePlanViewModel> _gamePlanViewModels;
         private GamePlanView _gamePlanView;
         private IGamePlanViewModel _gamePlanViewModel;
+        private IGameSudokuViewModel _gameSudokuViewModel;
+        private GameSudokuView _gameSudokuView;
 
-        public SudokuPlugin(IDatabaseAccess databaseAccess, IGamePlanViewModel gamePlanViewModel)
+        public SudokuPlugin(IDatabaseAccess databaseAccess, 
+            IGamePlanViewModel gamePlanViewModel,
+            IGameSudokuViewModel gameSudokuViewModel)
         {
             _databaseAccess = databaseAccess;
+            _gameSudokuViewModel = gameSudokuViewModel;
 
-            _gamePlanViewModel = gamePlanViewModel;
+            CreateGameSudokuView();
 
-            _gamePlanView = CreateGamePlanView();
+            //ToDo this has to be in an other level
+            //_gamePlanViewModel = gamePlanViewModel;
+            //_gamePlanView = CreateGamePlanView();
+            //_gamePlanView.BeginInit();
 
-            _gamePlanView.BeginInit();
+
+        }
+
+        private void CreateGameSudokuView()
+        {
+            _gameSudokuView = new GameSudokuView()
+            {
+                DataContext = _gameSudokuViewModel
+            };
+
+            //ToDo I dont know if this is necessary
+            _gameSudokuView.InitializeComponent();
         }
 
         private GamePlanView CreateGamePlanView()
         {
             log.Debug("CreateGamePlanView: Return GamePlanView");
 
-            return new GamePlanView(_gamePlanViewModel);
+            return new GamePlanView(_gamePlanViewModel)
+            {
+                DataContext = _gamePlanViewModel
+            };
         }
 
 

@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:Games"
         xmlns:sudoku="clr-namespace:Games.Plugin.Sudoku.GameSudoku;assembly=Games.Plugin.Sudoku" 
         mc:Ignorable="d"
-        Title="Games" Height="800" Width="800">
-    <sudoku:GameSudokuView Height="800" Width="800"/>
+        Title="Games">
+    <!--<sudoku:GameSudokuView Height="800" Width="800"/>-->
+    <Grid>
+        <Button Command="{Binding StartSudoku}"  Content="Sudoku" Width="200" Height="50"/>
+    </Grid>
 </Window>
