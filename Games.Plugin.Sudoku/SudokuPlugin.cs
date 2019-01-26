@@ -45,6 +45,7 @@ namespace Games.Plugin.Sudoku
 
             //ToDo I dont know if this is necessary
             _gameSudokuView.InitializeComponent();
+            _gameSudokuView.Show();
         }
 
         private GamePlanView CreateGamePlanView()

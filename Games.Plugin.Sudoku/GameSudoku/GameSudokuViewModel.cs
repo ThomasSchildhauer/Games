@@ -16,7 +16,10 @@ namespace Games.Plugin.Sudoku.GameSudoku
         public int MyProperty { get; set; }
         //ToDo has to be refactored
         public ICommand NewGameCommand = new CommandHandler(()=>new NewGameView(new NewGameViewModel(new Window())).InitializeComponent(), true);
-        public GameSudokuViewModel()
+
+
+        //ToDo Try to let autofac inject 
+        public GameSudokuViewModel(ICommand NewGameCommand)
         {
 
         }

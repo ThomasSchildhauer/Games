@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Handler\CommandHandler.cs" />
+    <Compile Include="Handler\CustomCommand.cs" />
+    <Compile Include="Handler\ITaskWrapper.cs" />
+    <Compile Include="Handler\TaskWrapper.cs" />
     <Compile Include="LogHelper\LogHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
