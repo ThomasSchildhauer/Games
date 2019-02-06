@@ -29,6 +29,13 @@ namespace Games.Plugin.Sudoku.ContainerConfig
             //builder.RegisterType<CommandHandler>().As<ICommand>().WithParameters(Action a, bool isEnabled);
             //builder.RegisterType<Func<TaskWrapper>>();
 
+            builder.Register<Func<string, ICommand>>(delegate (IComponentContext context) 
+            {
+                IComponentContext cc = context.Resolve<IComponentContext>();
+
+                return cc.ResolveNamed<ICommand>;
+            });
+
             return builder.Build();
         }
     }

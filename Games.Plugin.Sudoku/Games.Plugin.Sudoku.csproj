@@ -59,6 +59,7 @@
     <Compile Include="Database\DatabaseAccess.cs" />
     <Compile Include="Database\IDatabase.cs" />
     <Compile Include="Database\IDatabaseAccess.cs" />
+    <Compile Include="DelegateFactory\DifficultyHardCommand.cs" />
     <Compile Include="Events\OnPropertyCange.cs" />
     <Compile Include="GamePlan\Compare\CompareGamePlans.cs" />
     <Compile Include="GamePlan\Compare\HashValues.cs" />
@@ -111,5 +112,6 @@
       <Name>Base</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
