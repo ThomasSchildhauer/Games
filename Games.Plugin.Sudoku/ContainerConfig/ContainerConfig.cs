@@ -27,7 +27,7 @@ namespace Games.Plugin.Sudoku.ContainerConfig
             builder.RegisterType<HashValues>().As<IHashValues>();
             builder.RegisterType<CompareGamePlans>().As<ICompareGamePlans>();
             builder.RegisterType<NewGameViewModel>().As<INewGameViewModel>();
-            builder.RegisterType<GameSudokuViewModel>().As<IGameSudokuViewModel>();
+            builder.RegisterType<GameSudokuViewModel>().As<IGameSudokuViewModel>().WithParameter(new TypedParameter(typeof (NewGameView), new NewGameView()));
             builder.RegisterType<CommandHandler>().As<ICommand>();
 
             return builder.Build();

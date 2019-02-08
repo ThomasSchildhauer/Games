@@ -23,12 +23,11 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
         public NewGameView()
         {
             InitializeComponent();
-            DataContext = new NewGameViewModel(this);
+            //DataContext = new NewGameViewModel(this);
         }
+        //public NewGameView(INewGameViewModel newGameViewModel)
+        //{
 
-        public NewGameView(INewGameViewModel newGameViewModel)
-        {
-
-        }
+        //}
     }
 }
