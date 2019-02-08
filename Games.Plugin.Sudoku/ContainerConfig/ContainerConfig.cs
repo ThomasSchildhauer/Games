@@ -4,6 +4,7 @@ using Games.Plugin.Sudoku.Database;
 using Games.Plugin.Sudoku.GamePlan;
 using Games.Plugin.Sudoku.GamePlan.Compare;
 using Games.Plugin.Sudoku.GameSudoku;
+using Games.Plugin.Sudoku.GameSudoku.NewGame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,16 +26,9 @@ namespace Games.Plugin.Sudoku.ContainerConfig
             builder.RegisterType<GamePlanViewModel>().As<IGamePlanViewModel>();
             builder.RegisterType<HashValues>().As<IHashValues>();
             builder.RegisterType<CompareGamePlans>().As<ICompareGamePlans>();
+            builder.RegisterType<NewGameViewModel>().As<INewGameViewModel>();
             builder.RegisterType<GameSudokuViewModel>().As<IGameSudokuViewModel>();
-            //builder.RegisterType<CommandHandler>().As<ICommand>().WithParameters(Action a, bool isEnabled);
-            //builder.RegisterType<Func<TaskWrapper>>();
-
-            builder.Register<Func<string, ICommand>>(delegate (IComponentContext context) 
-            {
-                IComponentContext cc = context.Resolve<IComponentContext>();
-
-                return cc.ResolveNamed<ICommand>;
-            });
+            builder.RegisterType<CommandHandler>().As<ICommand>();
 
             return builder.Build();
         }

@@ -1,4 +1,5 @@
-﻿using Base.Handler;
+﻿using Autofac;
+using Base.Handler;
 using Games.Plugin.Sudoku.Events;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,14 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
 {
     public class NewGameViewModel : OnPropertyCange, INewGameViewModel
     {
-        private bool _canExecute = true;
-        private Window _window;
-        public event EventHandler SetDifficulty;
+        private readonly bool _canExecute = true;
+        private readonly Window _window;
         private int _difficulty;
+
+        private IContainer _container;
+        private Func<Action, bool, ICommand> _commandFactory;
+
+        public event EventHandler SetDifficulty;
 
         public int SelectedGameDifficulty
         {
@@ -34,7 +39,7 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
 
         public ICommand ButtonClickHard
         {
-            get => new CommandHandler(() =>
+            get => _commandFactory(() =>
             {
                 SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Hard;
                 OkButtonIsEnabled = true;
@@ -44,7 +49,7 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
 
         public ICommand ButtonClickMiddle
         {
-            get => new CommandHandler(() =>
+            get => _commandFactory(() =>
             {
                 SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Middle;
                 OkButtonIsEnabled = true;
@@ -54,7 +59,7 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
 
         public ICommand ButtonClickEasy
         {
-            get => new CommandHandler(() =>
+            get => _commandFactory(() =>
             {
                 SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Easy;
                 OkButtonIsEnabled = true;
@@ -64,7 +69,7 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
 
         public ICommand ButtonClickOk
         {
-            get => new CommandHandler(() =>
+            get => _commandFactory(() =>
             {
                 SetDifficulty.Invoke(this, EventArgs.Empty);
                 SystemCommands.CloseWindow(_window);
@@ -74,7 +79,7 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
 
         public ICommand ButtonClickCancel
         {
-            get => new CommandHandler(() =>
+            get => _commandFactory(() =>
             {
                 SystemCommands.CloseWindow(_window);
                 SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Default;
@@ -92,6 +97,8 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
         public NewGameViewModel(Window window)
         {
             _window = window;
+            _container = ContainerConfig.ContainerConfig.Config();
+            _commandFactory = _container.Resolve<Func<Action, bool, ICommand>>();
         }
     }
 }
