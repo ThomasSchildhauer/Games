@@ -36,6 +36,13 @@ namespace Games.Plugin.Sudoku.GamePlan
             set => ChangedProperty<bool[,]>(value, ref _gameStartView);
         }
 
+        private bool _ucIsVisible = false;
+
+        public bool UcIsVisible
+        {
+            get => _ucIsVisible;
+            set => ChangedProperty(value, ref _ucIsVisible);
+        }
 
         //Constructor
         public GamePlanViewModel(ICompareGamePlans compareGamePlans, IHashValues hashValues)

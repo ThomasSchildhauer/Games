@@ -22,8 +22,6 @@ namespace Games.Plugin.Sudoku.GameSudoku
         private INewGameViewModel _newGameViewModel;
         public int MyProperty { get; set; }
 
-        //ToDo has to be refactored
-        //public ICommand NewGameCommand = new CommandHandler(()=>new NewGameView(new NewGameViewModel(new Window())).InitializeComponent(), true);
 
         public ICommand NewGameCommand
         {

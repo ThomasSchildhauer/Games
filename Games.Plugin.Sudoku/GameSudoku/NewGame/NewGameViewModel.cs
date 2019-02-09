@@ -20,6 +20,8 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
         private ILifetimeScope _scope;
         private Func<Action, bool, ICommand> _commandFactory;
 
+
+
         public event EventHandler SetDifficulty;
 
         public int SelectedGameDifficulty
@@ -71,7 +73,7 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
         {
             get => _commandFactory(() =>
             {
-                SetDifficulty.Invoke(this, EventArgs.Empty);
+                SetDifficulty?.Invoke(this, EventArgs.Empty);
                 SystemCommands.CloseWindow(_window);
             }
             , _canExecute);

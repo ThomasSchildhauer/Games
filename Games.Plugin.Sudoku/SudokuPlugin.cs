@@ -4,6 +4,7 @@ using Games.Plugin.Sudoku.Container;
 using Games.Plugin.Sudoku.Database;
 using Games.Plugin.Sudoku.GamePlan;
 using Games.Plugin.Sudoku.GameSudoku;
+using Games.Plugin.Sudoku.GameSudoku.NewGame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,39 +17,61 @@ namespace Games.Plugin.Sudoku
     {
         private static readonly log4net.ILog log = LogHelper.GetNewLogger();
         private IDatabaseAccess _databaseAccess;
-        private GamePlanView _gamePlanView;
-        private IGamePlanViewModel _gamePlanViewModel;
         private IGameSudokuViewModel _gameSudokuViewModel;
         private GameSudokuView _gameSudokuView;
+        private INewGameViewModel _newGameViewModel;
+        private NewGameView _newGameView;
+        private IGamePlanViewModel _gamePlanViewModel;
+        private GamePlanView _gamePlanView;
 
-        public SudokuPlugin(IDatabaseAccess databaseAccess, 
+        //Constructor
+        public SudokuPlugin(
+            IDatabaseAccess databaseAccess, 
+            IGameSudokuViewModel gameSudokuViewModel,
+            GameSudokuView gameSudokuView,
+            INewGameViewModel newGameViewModel,
+            NewGameView newGameView,
             IGamePlanViewModel gamePlanViewModel,
-            IGameSudokuViewModel gameSudokuViewModel)
+            GamePlanView gamePlanView)
         {
             _databaseAccess = databaseAccess;
             _gameSudokuViewModel = gameSudokuViewModel;
-            CreateGameSudokuView();
-            _databaseAccess.LoadDatabaseAsync();
+            _gameSudokuView = gameSudokuView;
+            _newGameViewModel = newGameViewModel;
+            _newGameView = newGameView;
+            _gamePlanViewModel = gamePlanViewModel;
+            _gamePlanView = gamePlanView;
+
+            // View DataContext
+            _gameSudokuView.DataContext = _gameSudokuViewModel;
+            _newGameView.DataContext = _newGameViewModel;
+            _gamePlanView.DataContext = _gamePlanViewModel;
+
+            OpenGameSudokuView();
         }
 
-        private void CreateGameSudokuView()
+        private void OpenGameSudokuView()
         {
-            _gameSudokuView = new GameSudokuView()
-            {
-                DataContext = _gameSudokuViewModel
-            };
-
-            //ToDo I dont know if this is necessary
             _gameSudokuView.InitializeComponent();
             _gameSudokuView.Show();
+        }
+
+        private void OpenGamePlanView()
+        {
+            _gamePlanView.InitializeComponent();
+            _gamePlanViewModel.UcIsVisible = true;
+        }
+
+        private void OpenNewGameView()
+        {
+            _newGameView.InitializeComponent();
+            _newGameView.Show();
         }
 
         public async Task RunAsync()
         {
             log.Debug("RunAsync: Task.Run() App");
-
             _databaseAccess.LoadingDone += ProceedAfterLoading;
-
             await _databaseAccess.LoadDatabaseAsync();
         }
 
@@ -56,7 +79,12 @@ namespace Games.Plugin.Sudoku
         {
             //ToDo here it goes on...
 
+            SetDifficulty
 
+        }
+
+        public void ProceedAfterDifficultyChosen(object sender, EventArgs e)
+        {
 
         }
     }
