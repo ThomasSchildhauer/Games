@@ -12,9 +12,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Games.Plugin.Sudoku.ContainerConfig
+namespace Games.Plugin.Sudoku.Container
 {
-    public static class ContainerConfig
+    public static class Container
     {       
         public static IContainer Config()
         {

@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Base.Handler;
+using Games.Plugin.Sudoku.Container;
 using Games.Plugin.Sudoku.Events;
 using Games.Plugin.Sudoku.GameSudoku.NewGame;
 using System;
@@ -14,7 +15,7 @@ namespace Games.Plugin.Sudoku.GameSudoku
 {
     public class GameSudokuViewModel : OnPropertyCange, IGameSudokuViewModel
     {
-        private IContainer _container;
+        private ILifetimeScope _scope;
         private Func<Action, bool, ICommand> _commandFactory;
         private NewGameView _newGameView;
         private readonly bool _isExecutable = true;
@@ -31,11 +32,11 @@ namespace Games.Plugin.Sudoku.GameSudoku
 
         public GameSudokuViewModel(NewGameView newGameView, INewGameViewModel newGameViewModel)
         {
+            _scope = ContainerScope.Scope;
             _newGameView = newGameView;
             _newGameViewModel = newGameViewModel;
             _newGameView.DataContext = _newGameViewModel;
-            _container = ContainerConfig.ContainerConfig.Config();
-            _commandFactory = _container.Resolve<Func<Action, bool, ICommand>>();
+            _commandFactory = _scope.Resolve<Func<Action, bool, ICommand>>();
         }
     }
 }

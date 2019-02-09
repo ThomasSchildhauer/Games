@@ -1,4 +1,6 @@
-﻿using Base.LogHelper;
+﻿using Autofac;
+using Base.LogHelper;
+using Games.Plugin.Sudoku.Container;
 using Games.Plugin.Sudoku.Database;
 using Games.Plugin.Sudoku.GamePlan;
 using Games.Plugin.Sudoku.GameSudoku;

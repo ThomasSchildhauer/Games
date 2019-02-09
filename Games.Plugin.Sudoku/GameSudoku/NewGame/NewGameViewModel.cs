@@ -17,7 +17,7 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
         private readonly Window _window;
         private int _difficulty;
 
-        private IContainer _container;
+        private ILifetimeScope _scope;
         private Func<Action, bool, ICommand> _commandFactory;
 
         public event EventHandler SetDifficulty;
@@ -97,8 +97,8 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
         public NewGameViewModel(Window window)
         {
             _window = window;
-            _container = ContainerConfig.ContainerConfig.Config();
-            _commandFactory = _container.Resolve<Func<Action, bool, ICommand>>();
+            _scope = Container.ContainerScope.Scope;
+            _commandFactory = _scope.Resolve<Func<Action, bool, ICommand>>();
         }
     }
 }

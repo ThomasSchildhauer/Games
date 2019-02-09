@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Games.Plugin.Sudoku.ContainerConfig;
+using Games.Plugin.Sudoku.Container;
 using Autofac;
 using Base.LogHelper;
 
@@ -18,13 +18,13 @@ namespace Games.Plugin.Sudoku
         {
             log.Debug("Start: Start Games Plugin Sudoku");
 
-            var container = ContainerConfig.ContainerConfig.Config();
+            var container = Container.Container.Config();
 
-            using(var scope = container.BeginLifetimeScope())
+            using(Scope.Scope = container.BeginLifetimeScope())
             {
                 log.Debug("Start: Resolve ISudokuPlugin");
 
-                var app = scope.Resolve<ISudokuPlugin>();
+                var app = Scope.Scope.Resolve<ISudokuPlugin>();
 
                 Task.Run(()=>app.RunAsync());
             }

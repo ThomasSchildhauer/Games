@@ -193,3 +193,6 @@
 23:51:02,762 [G:\S\Games\Games\MainWindowViewModel.cs] DEBUG - Start Games Programm
 23:51:04,422 [G:\S\Games\Games.Plugin.Sudoku\StartSudokuPlugin.cs] DEBUG - Start: Start Games Plugin Sudoku
 23:51:04,467 [G:\S\Games\Games.Plugin.Sudoku\StartSudokuPlugin.cs] DEBUG - Start: Resolve ISudokuPlugin
+15:44:04,408 [G:\S\Games\Games\MainWindowViewModel.cs] DEBUG - Start Games Programm
+15:44:06,287 [G:\S\Games\Games.Plugin.Sudoku\StartSudokuPlugin.cs] DEBUG - Start: Start Games Plugin Sudoku
+15:44:06,331 [G:\S\Games\Games.Plugin.Sudoku\StartSudokuPlugin.cs] DEBUG - Start: Resolve ISudokuPlugin
