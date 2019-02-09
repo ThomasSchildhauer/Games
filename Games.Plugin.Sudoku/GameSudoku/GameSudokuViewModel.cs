@@ -20,23 +20,28 @@ namespace Games.Plugin.Sudoku.GameSudoku
         private NewGameView _newGameView;
         private readonly bool _isExecutable = true;
         private INewGameViewModel _newGameViewModel;
-
         public int MyProperty { get; set; }
+
         //ToDo has to be refactored
         //public ICommand NewGameCommand = new CommandHandler(()=>new NewGameView(new NewGameViewModel(new Window())).InitializeComponent(), true);
 
         public ICommand NewGameCommand
         {
-            get => _commandFactory(()=>_newGameView.InitializeComponent(), _isExecutable);
+            get => _commandFactory(() =>
+            {
+                _newGameView.InitializeComponent();
+                _newGameView.Show();
+                _newGameView.BringIntoView();
+            }, _isExecutable);
         }
 
         public GameSudokuViewModel(NewGameView newGameView, INewGameViewModel newGameViewModel)
         {
             _scope = ContainerScope.Scope;
+            _commandFactory = _scope.Resolve<Func<Action, bool, ICommand>>();
             _newGameView = newGameView;
             _newGameViewModel = newGameViewModel;
             _newGameView.DataContext = _newGameViewModel;
-            _commandFactory = _scope.Resolve<Func<Action, bool, ICommand>>();
         }
     }
 }

@@ -94,7 +94,7 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
             set => ChangedProperty(value, ref _difficulty);
         }
 
-        public NewGameViewModel(Window window)
+        public NewGameViewModel(NewGameView window)
         {
             _window = window;
             _scope = Container.ContainerScope.Scope;

@@ -20,11 +20,11 @@ namespace Games.Plugin.Sudoku
 
             var container = Container.Container.Config();
 
-            using(Scope.Scope = container.BeginLifetimeScope())
+            using(ContainerScope.Scope = container.BeginLifetimeScope())
             {
                 log.Debug("Start: Resolve ISudokuPlugin");
 
-                var app = Scope.Scope.Resolve<ISudokuPlugin>();
+                var app = ContainerScope.Scope.Resolve<ISudokuPlugin>();
 
                 Task.Run(()=>app.RunAsync());
             }
