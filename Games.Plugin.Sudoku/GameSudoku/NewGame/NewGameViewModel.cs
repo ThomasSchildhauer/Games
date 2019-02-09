@@ -14,13 +14,10 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
     public class NewGameViewModel : OnPropertyCange, INewGameViewModel
     {
         private readonly bool _canExecute = true;
-        private readonly Window _window;
         private int _difficulty;
 
         private ILifetimeScope _scope;
         private Func<Action, bool, ICommand> _commandFactory;
-
-
 
         public event EventHandler SetDifficulty;
 
@@ -74,7 +71,6 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
             get => _commandFactory(() =>
             {
                 SetDifficulty?.Invoke(this, EventArgs.Empty);
-                SystemCommands.CloseWindow(_window);
             }
             , _canExecute);
         }
@@ -96,9 +92,8 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
             set => ChangedProperty(value, ref _difficulty);
         }
 
-        public NewGameViewModel(NewGameView window)
+        public NewGameViewModel()
         {
-            _window = window;
             _scope = Container.ContainerScope.Scope;
             _commandFactory = _scope.Resolve<Func<Action, bool, ICommand>>();
         }

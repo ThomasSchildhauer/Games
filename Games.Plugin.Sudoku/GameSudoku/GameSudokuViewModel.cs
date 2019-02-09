@@ -22,24 +22,20 @@ namespace Games.Plugin.Sudoku.GameSudoku
         private INewGameViewModel _newGameViewModel;
         public int MyProperty { get; set; }
 
+        public event EventHandler OpenNewGame;
 
         public ICommand NewGameCommand
         {
             get => _commandFactory(() =>
             {
-                _newGameView.InitializeComponent();
-                _newGameView.Show();
-                _newGameView.BringIntoView();
+                OpenNewGame?.Invoke(this, EventArgs.Empty);
             }, _isExecutable);
         }
 
-        public GameSudokuViewModel(NewGameView newGameView, INewGameViewModel newGameViewModel)
+        public GameSudokuViewModel()
         {
             _scope = ContainerScope.Scope;
             _commandFactory = _scope.Resolve<Func<Action, bool, ICommand>>();
-            _newGameView = newGameView;
-            _newGameViewModel = newGameViewModel;
-            _newGameView.DataContext = _newGameViewModel;
         }
     }
 }

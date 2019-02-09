@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Games.Plugin.Sudoku
 {
@@ -46,7 +47,7 @@ namespace Games.Plugin.Sudoku
             _gameSudokuView.DataContext = _gameSudokuViewModel;
             _newGameView.DataContext = _newGameViewModel;
             _gamePlanView.DataContext = _gamePlanViewModel;
-
+          
             OpenGameSudokuView();
         }
 
@@ -78,14 +79,12 @@ namespace Games.Plugin.Sudoku
         public void ProceedAfterLoading(object sende, EventArgs e)
         {
             //ToDo here it goes on...
-
-            SetDifficulty
-
+            _newGameViewModel.SetDifficulty += ProceedAfterDifficultyChosen;
         }
 
         public void ProceedAfterDifficultyChosen(object sender, EventArgs e)
         {
-
+            SystemCommands.CloseWindow(_newGameView);
         }
     }
 }
