@@ -47,7 +47,9 @@ namespace Games.Plugin.Sudoku
             _gameSudokuView.DataContext = _gameSudokuViewModel;
             _newGameView.DataContext = _newGameViewModel;
             _gamePlanView.DataContext = _gamePlanViewModel;
-          
+
+            // Events
+            _gameSudokuViewModel.OpenNewGame += OpenNewGameView;
             OpenGameSudokuView();
         }
 
@@ -63,7 +65,7 @@ namespace Games.Plugin.Sudoku
             _gamePlanViewModel.UcIsVisible = true;
         }
 
-        private void OpenNewGameView()
+        private void OpenNewGameView(object sender, EventArgs e)
         {
             _newGameView.InitializeComponent();
             _newGameView.Show();

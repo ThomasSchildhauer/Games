@@ -79,7 +79,6 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
         {
             get => _commandFactory(() =>
             {
-                SystemCommands.CloseWindow(_window);
                 SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Default;
             }
             , _canExecute);
