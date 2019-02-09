@@ -235,3 +235,17 @@
 17:06:30,622 [G:\S\Games\Games.Plugin.Sudoku\SudokuPlugin.cs] DEBUG - RunAsync: Task.Run() App
 17:06:30,623 [G:\S\Games\Games.Plugin.Sudoku\Database\DatabaseAccess.cs] DEBUG - LoadDatabaseAsync: 
 17:06:30,624 [G:\S\Games\Games.Plugin.Sudoku\Database\DatabaseAccess.cs] DEBUG - LoopThroughDatabaseParallelAsync: 
+17:09:56,756 [G:\S\Games\Games\MainWindowViewModel.cs] DEBUG - Start Games Programm
+17:10:00,816 [G:\S\Games\Games.Plugin.Sudoku\StartSudokuPlugin.cs] DEBUG - Start: Start Games Plugin Sudoku
+17:10:00,859 [G:\S\Games\Games.Plugin.Sudoku\StartSudokuPlugin.cs] DEBUG - Start: Resolve ISudokuPlugin
+17:10:00,908 [G:\S\Games\Games.Plugin.Sudoku\SudokuPlugin.cs] DEBUG - RunAsync: Task.Run() App
+17:10:00,909 [G:\S\Games\Games.Plugin.Sudoku\Database\DatabaseAccess.cs] DEBUG - LoadDatabaseAsync: 
+17:10:00,910 [G:\S\Games\Games.Plugin.Sudoku\Database\DatabaseAccess.cs] DEBUG - LoopThroughDatabaseParallelAsync: 
+19:05:30,678 [G:\S\Games\Games\MainWindowViewModel.cs] DEBUG - Start Games Programm
+19:05:33,277 [G:\S\Games\Games.Plugin.Sudoku\StartSudokuPlugin.cs] DEBUG - Start: Start Games Plugin Sudoku
+19:05:33,322 [G:\S\Games\Games.Plugin.Sudoku\StartSudokuPlugin.cs] DEBUG - Start: Resolve ISudokuPlugin
+19:05:33,377 [G:\S\Games\Games.Plugin.Sudoku\Database\DatabaseAccess.cs] DEBUG - LoadDatabaseAsync: 
+19:05:33,378 [G:\S\Games\Games.Plugin.Sudoku\Database\DatabaseAccess.cs] DEBUG - LoopThroughDatabaseParallelAsync: 
+19:05:33,385 [G:\S\Games\Games.Plugin.Sudoku\SudokuPlugin.cs] DEBUG - RunAsync: Task.Run() App
+19:05:33,386 [G:\S\Games\Games.Plugin.Sudoku\Database\DatabaseAccess.cs] DEBUG - LoadDatabaseAsync: 
+19:05:33,386 [G:\S\Games\Games.Plugin.Sudoku\Database\DatabaseAccess.cs] DEBUG - LoopThroughDatabaseParallelAsync: 

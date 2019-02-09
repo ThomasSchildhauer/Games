@@ -27,15 +27,8 @@ namespace Games.Plugin.Sudoku
         {
             _databaseAccess = databaseAccess;
             _gameSudokuViewModel = gameSudokuViewModel;
-
             CreateGameSudokuView();
-
-            //ToDo this has to be in an other level
-            //_gamePlanViewModel = gamePlanViewModel;
-            //_gamePlanView = CreateGamePlanView();
-            //_gamePlanView.BeginInit();
-
-
+            _databaseAccess.LoadDatabaseAsync();
         }
 
         private void CreateGameSudokuView()
@@ -49,18 +42,6 @@ namespace Games.Plugin.Sudoku
             _gameSudokuView.InitializeComponent();
             _gameSudokuView.Show();
         }
-
-        private GamePlanView CreateGamePlanView()
-        {
-            log.Debug("CreateGamePlanView: Return GamePlanView");
-
-            return new GamePlanView(_gamePlanViewModel)
-            {
-                DataContext = _gamePlanViewModel
-            };
-        }
-
-
 
         public async Task RunAsync()
         {
