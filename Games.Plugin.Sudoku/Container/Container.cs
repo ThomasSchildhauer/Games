@@ -20,15 +20,18 @@ namespace Games.Plugin.Sudoku.Container
         {
             var builder = new ContainerBuilder();
 
-            // ToDo parameters in SudokuPlugin are missing
-            builder.RegisterType<SudokuPlugin>().As<ISudokuPlugin>();
+
+            builder.RegisterType<SudokuPlugin>().As<ISudokuPlugin>()
+                .WithParameter(new TypedParameter(typeof(GameSudokuView), new GameSudokuView()))
+                .WithParameter(new TypedParameter(typeof(NewGameView), new NewGameView()))
+                .WithParameter(new TypedParameter(typeof(GamePlanView), new GamePlanView()));
+
             builder.RegisterType<DatabaseAccess>().As<IDatabaseAccess>();
             builder.RegisterType<TestDatabase>().As<IDatabase>();
             builder.RegisterType<GamePlanViewModel>().As<IGamePlanViewModel>();
             builder.RegisterType<HashValues>().As<IHashValues>();
             builder.RegisterType<CompareGamePlans>().As<ICompareGamePlans>();
-            builder.RegisterType<NewGameView>();
-            builder.RegisterType<NewGameViewModel>().As<INewGameViewModel>().WithParameter(new TypedParameter(typeof(NewGameView), new NewGameView()));
+            builder.RegisterType<NewGameViewModel>().As<INewGameViewModel>();
             builder.RegisterType<GameSudokuViewModel>().As<IGameSudokuViewModel>();
             builder.RegisterType<CommandHandler>().As<ICommand>();
 
