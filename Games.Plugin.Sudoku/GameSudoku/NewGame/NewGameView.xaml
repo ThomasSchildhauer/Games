@@ -17,10 +17,10 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button x:Name="Hard" Content="Hard" Grid.Row="0" Grid.ColumnSpan="2" Margin="10" FontSize="40" Click="{Binding ButtonClickHard}"/>
-        <Button x:Name="Middle" Content="Middle" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" FontSize="40" Click="{Binding ButtonClickMiddle}"/>
-        <Button x:Name="Easy" Content="Easy" Grid.Row="2" Grid.ColumnSpan="2" Margin="10" FontSize="40" Click="{Binding ButtonClickEasy}"/>
-        <Button x:Name="Ok" Content="Ok" Grid.Row="3" Grid.Column="0" Margin="10" FontSize="40" Click="{Binding ButtonClickOk}" IsEnabled="{Binding OkButtonIsEnabled}"/>
-        <Button x:Name="Cancle" Content="Cancle" Grid.Row="3" Grid.Column="1" Margin="10" FontSize="40" Click="{Binding ButtonClickCancel}"/>
+        <Button Content="Hard" Grid.Row="0" Grid.ColumnSpan="2" Margin="10" FontSize="40" Command="{Binding ButtonClickHard}"/>
+        <Button Content="Middle" Grid.Row="1" Grid.ColumnSpan="2" Margin="10" FontSize="40" Command="{Binding ButtonClickMiddle}"/>
+        <Button Content="Easy" Grid.Row="2" Grid.ColumnSpan="2" Margin="10" FontSize="40" Command="{Binding ButtonClickEasy}"/>
+        <Button Content="Ok" Grid.Row="3" Grid.Column="0" Margin="10" FontSize="40" Command="{Binding ButtonClickOk}" IsEnabled="{Binding OkButtonIsEnabled}"/>
+        <Button Content="Cancle" Grid.Row="3" Grid.Column="1" Margin="10" FontSize="40" Command="{Binding ButtonClickCancel}"/>
     </Grid>
 </Window>

@@ -74,6 +74,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -101,6 +102,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{894c38b9-9c69-4b05-bcc9-288565a986cb}</Project>
+      <Name>Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Games.Plugin.Sudoku\Games.Plugin.Sudoku.csproj">
       <Project>{458a5264-4256-43b3-91bc-0c12629f6048}</Project>
       <Name>Games.Plugin.Sudoku</Name>

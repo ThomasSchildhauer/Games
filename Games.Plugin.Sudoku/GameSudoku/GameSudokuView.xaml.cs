@@ -18,13 +18,11 @@ namespace Games.Plugin.Sudoku.GameSudoku
     /// <summary>
     /// Interaction logic for TestView.xaml
     /// </summary>
-    public partial class GameSudokuView : Page
+    public partial class GameSudokuView : Window
     {
         public GameSudokuView()
         {
             InitializeComponent();
-
-            StartSudokuPlugin.Start();
         }
     }
 }

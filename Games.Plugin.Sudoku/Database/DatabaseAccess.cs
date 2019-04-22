@@ -38,14 +38,7 @@ namespace Games.Plugin.Sudoku.Database
             log.Debug("LoadDatabaseAsync: ");
 
             GamePlans = await LoopThroughDatabaseParallelAsync();
-
-            //ToDo something throws a System.NullReferenceException
-            //if (LoadingDone == null)
-            //{
-            //    LoadingDone(this, EventArgs.Empty);
-            //}
-            //Die Lösung ist glaub ich wie folgt:
-            //LoadingDone?.Invoke(this, EventArgs.Empty)
+            LoadingDone?.Invoke(this, EventArgs.Empty);
         }
 
         public async Task AddToDatabaseAsync(IGamePlanViewModel gamePlanModel)
@@ -53,9 +46,6 @@ namespace Games.Plugin.Sudoku.Database
             log.Debug("AddToDatabaseAsync: ");
 
             await Task.Run(() => _database.GamePlans.Add(gamePlanModel));
-
-            //ToDo something throws an Exception
-            //GamePlans.Add(gamePlanModel);
         }
 
         private async Task<List<IGamePlanViewModel>> LoopThroughDatabaseParallelAsync()
@@ -70,7 +60,6 @@ namespace Games.Plugin.Sudoku.Database
                 {
                     gamePlans.Add(items);
                 });
-                //Parallel.ForEach<IGamePlanViewModel>(gamePlans, (item) => gamePlans.Add(item));
             });
 
             return gamePlans.ToList();
@@ -86,27 +75,6 @@ namespace Games.Plugin.Sudoku.Database
         {
             log.Debug("CancelLoading: Has to be implemented first...");
             //ToDo Implement This
-        }
-
-
-
-
-
-        //still here for testing purposes
-        private async Task<List<IGamePlanViewModel>> LoopThroughDatabaseAsync()
-        {
-            log.Debug("LoopTroughDatabaseAsync: ");
-
-            List<Task<IGamePlanViewModel>> tasks = new List<Task<IGamePlanViewModel>>();
-
-            foreach (IGamePlanViewModel item in _database.GamePlans)
-            {
-                tasks.Add(Task.Run(() => item));
-            }
-
-            var _gamePlanViewModels = await Task.WhenAll(tasks);
-
-            return _gamePlanViewModels.ToList();
         }
     }
 }
