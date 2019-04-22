@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Games.Plugin.Sudoku;
-using Games.Plugin.Sudoku.ContainerConfig;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +12,14 @@ namespace TestConsoleApp
     {
         static void Main(string[] args)
         {
-            var container = ContainerConfig.Config();
+            //    var container = ContainerConfig.Config();
 
-            using (var scope = container.BeginLifetimeScope())
-            {
-                var _programm = scope.Resolve<ISudokuPlugin>();
+            //    using (var scope = container.BeginLifetimeScope())
+            //    {
+            //        var _programm = scope.Resolve<ISudokuPlugin>();
 
-                _programm.RunAsync();
-            }
+            //        _programm.RunAsync();
+            //    }
         }
     }
 }

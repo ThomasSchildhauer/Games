@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Games
+namespace GamesUI.ViewModels
 {
     public class MainWindowViewModel
     {

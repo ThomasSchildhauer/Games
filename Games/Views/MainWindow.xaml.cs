@@ -1,8 +1,9 @@
-﻿using System.Windows;
+﻿using GamesUI.ViewModels;
+using System.Windows;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
 
-namespace Games
+namespace GamesUI.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
