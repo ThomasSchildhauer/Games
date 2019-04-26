@@ -10,6 +10,8 @@ namespace GamesUI
 {
     public class Bootstrapper : BootstrapperBase
     {
+        public SimpleContainer container = new SimpleContainer();
+
         protected override void BuildUp(object instance)
         {
             base.BuildUp(instance);
@@ -17,22 +19,23 @@ namespace GamesUI
 
         protected override void Configure()
         {
-            base.Configure();
+            // register viewmodels...
+            container.RegisterSingleton
         }
 
         protected override IEnumerable<object> GetAllInstances(Type service)
         {
-            return base.GetAllInstances(service);
+            return container.GetAllInstances(service);
         }
 
         protected override object GetInstance(Type service, string key)
         {
-            return base.GetInstance(service, key);
+            return container.GetInstance(service, key);
         }
 
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            base.OnStartup(sender, e);
+            container.BuildUp(sender);
         }
     }
 }
