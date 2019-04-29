@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Handler\CommandHandler.cs" />
+    <Compile Include="Interfaces\IGamesPlugin.cs" />
     <Compile Include="LogHelper\LogHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

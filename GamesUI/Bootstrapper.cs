@@ -20,7 +20,7 @@ namespace GamesUI
         protected override void Configure()
         {
             // register viewmodels...
-            container.RegisterSingleton
+            //container.RegisterSingleton
         }
 
         protected override IEnumerable<object> GetAllInstances(Type service)
