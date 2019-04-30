@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using Games.Interfaces;
+using Base.Interfaces;
 using Games.Loader;
 using System;
 using System.Collections.Generic;
