@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Games.Plugin.Sudoku.Container;
 using Autofac;
 using Base.LogHelper;
-using Games.Interfaces;
+using Base.Interfaces;
 
 namespace Games.Plugin.Sudoku
 {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Games.Loader
+namespace GamesUI.Loader
 {
     public class PluginLoader : IPluginLoader
     {
