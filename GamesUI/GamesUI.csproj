@@ -85,7 +85,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Autofac\Container.cs" />
+    <Compile Include="Autofac\UIContainer.cs" />
     <Compile Include="Autofac\IUIContainer.cs" />
     <Compile Include="IProgramm.cs" />
     <Compile Include="Loader\IPluginLoader.cs" />

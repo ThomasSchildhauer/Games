@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Games
+namespace GamesUI
 {
     /// <summary>
     /// Interaction logic for App.xaml

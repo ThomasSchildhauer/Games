@@ -23,5 +23,13 @@ namespace GamesUI.Loader
                 plugin.Value.OnStartup();
             }
         }
+
+        public List<string> GetPluginNames()
+        {
+            List<string> names = new List<string>();
+            _plugins.ToList().ForEach(p => names.Add(p.Metadata.ToString()));
+
+            return names;
+        }
     }
 }
