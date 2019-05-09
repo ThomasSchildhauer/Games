@@ -1,4 +1,5 @@
 ﻿using Base.Handler;
+using GalaSoft.MvvmLight;
 using Games.Plugin.Sudoku;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Windows.Input;
 
 namespace GamesUI.ViewModels
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : ViewModelBase
     {
         private static readonly log4net.ILog log = Logger.GetNewLogger();
 

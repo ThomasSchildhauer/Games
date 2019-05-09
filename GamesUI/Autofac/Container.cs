@@ -9,15 +9,20 @@ using System.Threading.Tasks;
 
 namespace GamesUI.Autofac
 {
-    public class Container
+    public class UIContainer : IUIContainer
     {
         public IContainer Config()
         {
+            // Plugins
             var types = GetAllDllTypes<IGamesPlugin>(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location));
 
             var builder = new ContainerBuilder();
 
             types?.ForEach(t => builder.RegisterType(t).As<IGamesPlugin>().WithMetadata("TypeName", t.Name).SingleInstance());
+
+            
+            // Programm start
+            builder.RegisterType<Programm>().As<IProgramm>();
 
             return builder.Build();
         }
