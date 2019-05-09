@@ -1,4 +1,6 @@
 ﻿using Base.Handler;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
 using Games.Plugin.Sudoku;
 using System;
 using System.Collections.Generic;
@@ -9,13 +11,13 @@ using System.Windows.Input;
 
 namespace GamesUI.ViewModels
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : ViewModelBase
     {
         private static readonly log4net.ILog log = Logger.GetNewLogger();
 
         public ICommand StartSudoku
         {
-            get => new CommandHandler(()=>StartSudokuPlugin.Start(), true);
+            get => new RelayCommand(()=>StartSudokuPlugin.Start(), true);
         }
 
         public MainWindowViewModel()
