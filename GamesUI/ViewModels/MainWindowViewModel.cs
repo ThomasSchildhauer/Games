@@ -13,10 +13,10 @@ namespace GamesUI.ViewModels
     {
         private static readonly log4net.ILog log = Logger.GetNewLogger();
 
-        public ICommand StartSudoku
-        {
-            get => new CommandHandler(()=>StartSudokuPlugin.Start(), true);
-        }
+        //public ICommand StartSudoku
+        //{
+        //    get => new CommandHandler(()=>StartSudokuPlugin.Start(), true);
+        //}
 
         public MainWindowViewModel()
         {
