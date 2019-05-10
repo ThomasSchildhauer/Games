@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GamesUI.ViewModels
 {
-    public class PluginViewModel : ViewModelBase
+    public class PluginViewModel : ViewModelBase, IPluginViewModel
     {
         public List<string> Plugins { get; set; }
 

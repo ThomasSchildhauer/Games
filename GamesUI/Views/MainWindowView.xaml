@@ -4,11 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GamesUI"
-        xmlns:app ="clr-namespace:GamesUI.ViewModels"
+        xmlns:vm ="clr-namespace:GamesUI.ViewModels"
         xmlns:sudoku="clr-namespace:Games.Plugin.Sudoku.GameSudoku;assembly=Games.Plugin.Sudoku" 
         mc:Ignorable="d"
         Title="Games"
-        d:DataContext="{d:DesignInstance Type=app:MainWindowViewModel, IsDesignTimeCreatable=True}">
+        d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel, IsDesignTimeCreatable=True}">
     <DockPanel>
         <Menu DockPanel.Dock="Top" FontSize="18">
             <MenuItem Header="_Account">
