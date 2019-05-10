@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Base.Interfaces;
+using GamesUI.ViewModels;
+using GamesUI.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +25,8 @@ namespace GamesUI.Autofac
             
             // Programm start
             builder.RegisterType<Programm>().As<IProgramm>();
+            builder.RegisterType<MainWindowViewModel>().As<IMainWindowViewModel>();
+            builder.RegisterType<MainWindowView>().AsSelf();
 
             return builder.Build();
         }

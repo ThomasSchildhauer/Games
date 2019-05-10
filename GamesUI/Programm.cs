@@ -1,5 +1,7 @@
 ﻿using Autofac.Features.Metadata;
 using Base.Interfaces;
+using GamesUI.ViewModels;
+using GamesUI.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +12,20 @@ namespace GamesUI
 {
     public class Programm : IProgramm
     {
-        private IEnumerable<Meta<IGamesPlugin>> _plugins;
+        private IMainWindowViewModel _mainWindowViewModel;
+        private MainWindowView _mainWindowView;
 
-        public Programm(IEnumerable<Meta<IGamesPlugin>> plugins)
+        public Programm(IMainWindowViewModel mainWindowViewModel, MainWindowView mainWindowView)
         {
-            _plugins = plugins;
+            _mainWindowViewModel = mainWindowViewModel;
+            _mainWindowView = mainWindowView;
         }
 
         public void Run()
         {
-
+            _mainWindowView.DataContext = _mainWindowViewModel;
+            _mainWindowView.InitializeComponent();
+            _mainWindowView.Show();
         }
-
-
     }
 }
