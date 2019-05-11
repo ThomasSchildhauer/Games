@@ -1,5 +1,9 @@
-﻿using GalaSoft.MvvmLight;
+﻿using Autofac.Features.Metadata;
+using Base.Interfaces;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
 using GamesUI.Loader;
+using GamesUI.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +14,26 @@ namespace GamesUI.ViewModels
 {
     public class PluginViewModel : ViewModelBase, IPluginViewModel
     {
-        public List<string> Plugins { get; set; }
-
-        private IPluginLoader _pluginLoader;
-
-        public PluginViewModel(IPluginLoader pluginLoader)
+        private List<IPluginsTemplate> _pluginTemplates;
+        public List<IPluginsTemplate> PluginTemplates
         {
-            _pluginLoader = pluginLoader;
-            Plugins = _pluginLoader.GetPluginNames();
+            get => _pluginTemplates;
+            private set
+            {
+                Set(nameof(PluginTemplates), ref _pluginTemplates);
+            }
+        }
+
+        private IEnumerable<Meta<IGamesPlugin>> _plugins;
+        private Func<Meta<IGamesPlugin>, IPluginsTemplate> _templatesFunc;
+
+        public PluginViewModel(IEnumerable<Meta<IGamesPlugin>> plugins, Func<Meta<IGamesPlugin>, IPluginsTemplate> templatesFunc, List<IPluginsTemplate> pluginTemplates)
+        {
+            _plugins = plugins;
+            _templatesFunc = templatesFunc;
+            _pluginTemplates = pluginTemplates;
+
+            _plugins.ToList().ForEach(p => _pluginTemplates.Add(_templatesFunc(p)));
         }
     }
 }

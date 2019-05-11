@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Base.Interfaces;
+using GamesUI.Templates;
 using GamesUI.ViewModels;
 using GamesUI.Views;
 using System;
@@ -27,6 +28,9 @@ namespace GamesUI.Autofac
             builder.RegisterType<Programm>().As<IProgramm>();
             builder.RegisterType<MainWindowViewModel>().As<IMainWindowViewModel>();
             builder.RegisterType<MainWindowView>().AsSelf();
+            builder.RegisterType<PluginsTemplate>().As<IPluginsTemplate>();
+            builder.RegisterType<PluginViewModel>().As<IPluginViewModel>();
+            builder.RegisterType<PluginView>().AsSelf();
 
             return builder.Build();
         }

@@ -11,8 +11,7 @@ namespace GamesUI.Views
     public partial class MainWindowView : Window
     {
         public MainWindowView()
-        {
-            DataContext = new MainWindowViewModel();      
+        {   
             InitializeComponent();            
         }
     }

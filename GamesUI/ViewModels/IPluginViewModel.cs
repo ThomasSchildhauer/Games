@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using GamesUI.Templates;
 
 namespace GamesUI.ViewModels
 {
     public interface IPluginViewModel
     {
-        List<string> Plugins { get; set; }
+        List<IPluginsTemplate> PluginTemplates { get; }
     }
 }
