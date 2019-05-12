@@ -19,11 +19,16 @@ namespace GamesUI.Views
     /// <summary>
     /// Interaction logic for PluginView.xaml
     /// </summary>
-    public partial class PluginView : Page
+    public partial class PluginView : UserControl
     {
         public PluginView()
         {
             InitializeComponent();
+        }
+
+        public PluginView(IPluginViewModel pluginViewModel) : this()
+        {
+            DataContext = pluginViewModel;
         }
     }
 }

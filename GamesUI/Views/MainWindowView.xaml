@@ -7,16 +7,15 @@
         xmlns:vm ="clr-namespace:GamesUI.ViewModels"
         xmlns:v ="clr-namespace:GamesUI.Views"
         mc:Ignorable="d"
-        Title="Games"
-        d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel, IsDesignTimeCreatable=True}">
-    <Canvas>
-        <DockPanel>
-            <Menu DockPanel.Dock="Top" FontSize="18">
-                <MenuItem Header="_Account">
-                    <MenuItem x:Name="LoginView" Header="_Login"/>
-                </MenuItem>
-                <MenuItem Header="_Reload"/>
-            </Menu>
-        </DockPanel>
-    </Canvas>
+        Title="Games">
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" FontSize="18">
+            <MenuItem Header="_Account">
+                <MenuItem x:Name="LoginView" Header="_Login"/>
+            </MenuItem>
+            <MenuItem Header="_Reload"/>
+        </Menu>
+        <v:PluginView DataContext="{Binding PluginViewModel}" Height="450" Width="450"/>
+    </DockPanel>
 </Window>

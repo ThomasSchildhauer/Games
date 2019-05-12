@@ -25,15 +25,19 @@ namespace GamesUI.ViewModels
         }
 
         private IEnumerable<Meta<IGamesPlugin>> _plugins;
-        private Func<Meta<IGamesPlugin>, IPluginsTemplate> _templatesFunc;
+        //private Func<Meta<IGamesPlugin>, IPluginsTemplate> _templatesFunc;
 
-        public PluginViewModel(IEnumerable<Meta<IGamesPlugin>> plugins, Func<Meta<IGamesPlugin>, IPluginsTemplate> templatesFunc, List<IPluginsTemplate> pluginTemplates)
+        public PluginViewModel(
+            IEnumerable<Meta<IGamesPlugin>> plugins,
+            Func<Meta<IGamesPlugin>, IPluginsTemplate> templatesFunc,
+            IEnumerable<IPluginsTemplate> pluginTemplates
+            )
         {
             _plugins = plugins;
-            _templatesFunc = templatesFunc;
-            _pluginTemplates = pluginTemplates;
+            //_templatesFunc = templatesFunc;
+            _pluginTemplates = pluginTemplates.ToList();
 
-            _plugins.ToList().ForEach(p => _pluginTemplates.Add(_templatesFunc(p)));
+            _plugins.ToList().ForEach(p => _pluginTemplates.Add(templatesFunc(p)));
         }
     }
 }

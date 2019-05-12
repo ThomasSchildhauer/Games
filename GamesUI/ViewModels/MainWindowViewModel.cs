@@ -1,7 +1,7 @@
 ﻿using Base.Handler;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
-using Games.Plugin.Sudoku;
+using GamesUI.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +20,27 @@ namespace GamesUI.ViewModels
             get => new RelayCommand(() => log.Debug("Login"));
         }
 
-        public MainWindowViewModel()
+        public ICommand Refresh
+        {
+            get => new RelayCommand(() => log.Debug("Refresh"));
+        }
+
+        private IPluginViewModel _pluginViewModel;
+
+        public IPluginViewModel PluginViewModel
+        {
+            get => _pluginViewModel;
+            set
+            {
+                Set(nameof(PluginViewModel), ref _pluginViewModel);
+            }
+        }
+
+        public MainWindowViewModel(IPluginViewModel pluginViewModel)
         {
             log.Debug("Start Games Programm");
+            _pluginViewModel = pluginViewModel;
+            //_pluginView.DataContext = pluginViewModel;
         }
     }
 }

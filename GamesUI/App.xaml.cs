@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Games.Plugin.Sudoku.Container;
 using GamesUI;
 using GamesUI.Autofac;
 using System;

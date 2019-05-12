@@ -14,5 +14,10 @@ namespace GamesUI.Views
         {   
             InitializeComponent();            
         }
+
+        public MainWindowView(IMainWindowViewModel mainWindowViewModel) : this()
+        {
+            DataContext = mainWindowViewModel;
+        }
     }
 }
