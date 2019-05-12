@@ -18,10 +18,10 @@ namespace GamesUI.Templates
 
         public ICommand ButtonCommand { get; set; }
 
-        public PluginsTemplate(Meta<IGamesPlugin> gamesPlugin)
+        public PluginsTemplate() //Meta<IGamesPlugin> gamesPlugin)
         {
-            ButtonText = gamesPlugin.Metadata.Values.ToString();
-            ButtonCommand = new RelayCommand(() => gamesPlugin.Value.OnStartup());
+            //ButtonText = gamesPlugin.Metadata.Values.ToString();
+            //ButtonCommand = new RelayCommand(() => gamesPlugin.Value.OnStartup());
         }
     }
 }

@@ -11,9 +11,20 @@ using Base.Interfaces;
 
 namespace Games.Plugin.Sudoku
 {
-    public class StartSudokuPlugin:IGamesPlugin
+    public class StartSudokuPlugin : IGamesPlugin
     {
         private static readonly log4net.ILog log = LogHelper.GetNewLogger();
+
+        public StartSudokuPlugin()
+        {
+            Name = "Sudoku";
+        }
+
+        public string Name
+        {
+            get;
+            set;
+        }
 
         public void OnStartup()
         {
