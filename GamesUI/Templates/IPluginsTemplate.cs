@@ -4,7 +4,7 @@ namespace GamesUI.Templates
 {
     public interface IPluginsTemplate
     {
-        ICommand ButtonCommand { get; set; }
-        string ButtonText { get; set; }
+        ICommand ButtonCommand { get; }
+        string ButtonText { get; }
     }
 }

@@ -77,6 +77,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Loader\IMainWindowViewLoader.cs" />
+    <Compile Include="Loader\MainWindowViewLoader.cs" />
     <Compile Include="Templates\IPluginsTemplate.cs" />
     <Compile Include="Templates\PluginsTemplate.cs" />
     <Compile Include="ViewModels\IPluginViewModel.cs" />

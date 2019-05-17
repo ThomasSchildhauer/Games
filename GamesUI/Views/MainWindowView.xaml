@@ -16,6 +16,6 @@
             </MenuItem>
             <MenuItem Header="_Reload"/>
         </Menu>
-        <v:PluginView DataContext="{Binding PluginViewModel}" Height="450" Width="450"/>
+        <v:PluginView DataContext="{Binding PluginViewModel}"/>
     </DockPanel>
 </Window>

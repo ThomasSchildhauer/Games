@@ -29,19 +29,24 @@ namespace GamesUI.ViewModels
 
         public PluginViewModel(
             IEnumerable<Meta<IGamesPlugin>> plugins,
-            Func<IPluginsTemplate> templatesFunc,
+            Func<Meta<IGamesPlugin>, IPluginsTemplate> templatesFunc,
             IEnumerable<IPluginsTemplate> pluginTemplates)
         {
             _plugins = plugins;
-            //_templatesFunc = templatesFunc;
             _pluginTemplates = pluginTemplates.ToList();
+            _pluginTemplates.RemoveAt(0);
 
-            foreach(var p in _plugins)
+            foreach (var p in _plugins)
             {
-                var template = templatesFunc();
-                template.ButtonCommand = new RelayCommand(() => p.Value.OnStartup());
-                template.ButtonText = p.Value.Name;
+                var template = templatesFunc(p);
+                
+                _pluginTemplates.Add(template);
             }
+        }
+
+        public PluginViewModel()
+        {
+
         }
     }
 }

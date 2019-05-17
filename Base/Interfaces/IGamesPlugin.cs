@@ -8,7 +8,7 @@ namespace Base.Interfaces
 {
     public interface IGamesPlugin
     {
-        string Name { get; set; }
+        string Name { get; }
         void OnStartup();
     }
 }

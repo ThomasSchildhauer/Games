@@ -14,32 +14,32 @@ namespace Games.Plugin.Sudoku
     public class StartSudokuPlugin : IGamesPlugin
     {
         private static readonly log4net.ILog log = LogHelper.GetNewLogger();
+        public string Name { get; } = "Sudoku";
 
-        public StartSudokuPlugin()
-        {
-            Name = "Sudoku";
-        }
+        //private ISudokuPlugin _sudokuPlugin;
 
-        public string Name
-        {
-            get;
-            set;
-        }
+        //public StartSudokuPlugin(ISudokuPlugin sudokuPlugin)
+        //{
+        //    _sudokuPlugin = sudokuPlugin;
+        //}
 
         public void OnStartup()
         {
+
             log.Debug("Start: Start Games Plugin Sudoku");
 
-            var container = Container.Container.Config();
+            //Task.Run(() => _sudokuPlugin.RunAsync());
 
-            using (ContainerScope.Scope = container.BeginLifetimeScope())
-            {
-                log.Debug("Start: Resolve ISudokuPlugin");
+            //var container = Container.Container.Config();
 
-                var app = ContainerScope.Scope.Resolve<ISudokuPlugin>();
+            //using (ContainerScope.Scope = container.BeginLifetimeScope())
+            //{
+            //    log.Debug("Start: Resolve ISudokuPlugin");
 
-                Task.Run(() => app.RunAsync());
-            }
+            //    var app = ContainerScope.Scope.Resolve<ISudokuPlugin>();
+
+            //    Task.Run(() => app.RunAsync());
+            //}
         }
     }
 }

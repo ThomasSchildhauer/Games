@@ -1,5 +1,6 @@
 ﻿using Autofac.Features.Metadata;
 using Base.Interfaces;
+using GamesUI.Loader;
 using GamesUI.ViewModels;
 using GamesUI.Views;
 using System;
@@ -12,21 +13,16 @@ namespace GamesUI
 {
     public class Programm : IProgramm
     {
-        private IMainWindowViewModel _mainWindowViewModel;
-        private MainWindowView _mainWindowView;
+        IMainWindowViewLoader _mainWindowViewLoader;
 
-        public Programm(
-            //IMainWindowViewModel mainWindowViewModel,
-            MainWindowView mainWindowView)
+        public Programm(IMainWindowViewLoader mainWindowViewLoader)
         {
-            //_mainWindowViewModel = mainWindowViewModel;
-            _mainWindowView = mainWindowView;
+            _mainWindowViewLoader = mainWindowViewLoader;
         }
 
         public void Run()
         {
-            //_mainWindowView.DataContext = _mainWindowViewModel;
-            _mainWindowView.Show();
+            _mainWindowViewLoader.LoadView();
         }
     }
 }

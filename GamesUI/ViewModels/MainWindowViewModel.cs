@@ -40,7 +40,11 @@ namespace GamesUI.ViewModels
         {
             log.Debug("Start Games Programm");
             _pluginViewModel = pluginViewModel;
-            //_pluginView.DataContext = pluginViewModel;
+        }
+
+        public MainWindowViewModel()
+        {
+            _pluginViewModel = new PluginViewModel();
         }
     }
 }
