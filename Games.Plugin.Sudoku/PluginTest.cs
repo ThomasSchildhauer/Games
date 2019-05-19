@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Games.Plugin.Sudoku
 {
-    public class PluginTest : IGamesPlugin
+    public class PluginTest //: IGamesPlugin
     {
         public string Name { get; } = "Test Plugin";
 

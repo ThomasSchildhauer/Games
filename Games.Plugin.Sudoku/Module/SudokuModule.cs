@@ -19,9 +19,9 @@ namespace Games.Plugin.Sudoku.Module
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<SudokuPlugin>().As<ISudokuPlugin>()
-    .WithParameter(new TypedParameter(typeof(GameSudokuView), new GameSudokuView()))
-    .WithParameter(new TypedParameter(typeof(NewGameView), new NewGameView()))
-    .WithParameter(new TypedParameter(typeof(GamePlanView), new GamePlanView()));
+                    .WithParameter(new TypedParameter(typeof(GameSudokuView), new GameSudokuView()))
+                    .WithParameter(new TypedParameter(typeof(NewGameView), new NewGameView()))
+                    .WithParameter(new TypedParameter(typeof(GamePlanView), new GamePlanView()));
 
             builder.RegisterType<DatabaseAccess>().As<IDatabaseAccess>();
             builder.RegisterType<TestDatabase>().As<IDatabase>();

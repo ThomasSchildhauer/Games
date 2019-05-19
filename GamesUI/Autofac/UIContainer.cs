@@ -15,26 +15,13 @@ namespace GamesUI.Autofac
 {
     public class UIContainer : IUIContainer
     {
+        private List<Type> _types = new List<Type>();
+
         public IContainer Config()
         {
-            // Plugins
-            //var modules = GetAllDllTypes<Module>(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location));
-            var types = GetAllDllTypes<IGamesPlugin>(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location));
-
-
             var builder = new ContainerBuilder();
 
-            //var instances = CreateInstances();
-
-            //foreach (var i in instances)
-            //{
-            //    builder.RegisterInstance(i).As<IGamesPlugin>().WithMetadata("TypeName", i.Name);
-            //}
-
-            //modules?.ForEach(m => builder.RegisterModule(Activator.CreateInstance(m) as Module));
-
-            types?.ForEach(t => builder.RegisterType(t).As<IGamesPlugin>().WithMetadata("TypeName", t.Name).SingleInstance());
-
+            // Register Types
             // Programm start
             builder.RegisterType<Programm>().As<IProgramm>();
             builder.RegisterType<MainWindowViewLoader>().As<IMainWindowViewLoader>();
@@ -44,39 +31,92 @@ namespace GamesUI.Autofac
             builder.RegisterType<PluginViewModel>().As<IPluginViewModel>();
             builder.RegisterType<PluginView>().AsSelf();
 
-            return builder.Build();
-        }
 
-        public List<Type> GetAllDllTypes<T>(string path)
-        {
-            var myType = typeof(T);
+            //######################//
+            // Dynamic registration //
+            //######################//
+            string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
-            List<Type> types = new List<Type>();
+            // Plugin Registration
+            var myType = typeof(IGamesPlugin);
 
-            foreach (var dll in Directory.GetFiles(path + "\\Plugins\\", "*.dll", SearchOption.AllDirectories))
+            // Check if Directory exists
+            if (Directory.Exists(path))
             {
-                if (dll != "Autofac.dll")
+                // get all filenames in directory, take all dlls and only search top directory. Search options could be changed to all directories
+                IEnumerable<string> fileNames = Directory.EnumerateFiles(path, "*.dll", SearchOption.AllDirectories);
+
+                foreach (var fileName in fileNames)
                 {
-                    var assembly = System.Reflection.Assembly.LoadFile(dll);
-                    assembly?.GetTypes()?.Where(t => !t.IsInterface && !t.IsAbstract && t.IsClass && myType.IsAssignableFrom(t))?.ToList().ForEach(t => types.Add(t));
+                    // load all assemblies
+                    System.Reflection.Assembly assembly = System.Reflection.Assembly.LoadFrom(fileName);
+
+                    // export all types from the current assembly
+                    IEnumerable<Type> types = assembly.ExportedTypes;
+
+                    foreach (var t in types)
+                    {
+                        // check if the type meets the criterias: type is a class and type is inherited from myType
+                        if (t.IsClass && myType.IsAssignableFrom(t))
+                        {
+                            // add types that meet all criterias to a list
+                            _types.Add(t);
+                        }
+                    }
+                }
+
+                // register all types in the List
+                foreach (var t in _types)
+                {
+                    builder.RegisterType(t)
+                        .As<IGamesPlugin>()
+                        .WithMetadata("TypeName", t.Name)
+                        .SingleInstance();
                 }
             }
 
-            return types;
-        }
 
-        public List<IGamesPlugin> CreateInstances()
-        {
-            var list = new List<IGamesPlugin>();
-            var types = GetAllDllTypes<IGamesPlugin>(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location));
 
-            foreach (var t in types)
+            // Plugin Autofac Modul registration
+            // for testing purposes i implement this again to find bugs
+            var moduleType = typeof(Module);
+
+            // check if directory exists
+            if (Directory.Exists(path))
             {
-                var instance = Activator.CreateInstance(t);
-                list.Add(instance as IGamesPlugin);
+                // get all filenames in the directory, that are dlls and which are located in top directory only
+                IEnumerable<string> fileNames = Directory.EnumerateFiles(path, "*.dll", SearchOption.AllDirectories);
+
+                foreach (var fileName in fileNames)
+                {
+                    // loads all assemblies from file
+                    System.Reflection.Assembly assembly = System.Reflection.Assembly.LoadFrom(fileName);
+
+                    // exports all types from a assembly
+                    IEnumerable<Type> types = assembly.ExportedTypes;
+
+                    // check if the type meets the criterias: type is a class and type is inherited from myType
+                    // the inheritance has to be checked because only the types of a assembly that holds a class that inherits from myType have be loaded
+                    var isPlugin = types.Where(t => t.IsClass && myType.IsAssignableFrom(t));
+
+                    // if the there is a type in the assembly that inherits from myType the check for Autofac.Module goes on
+                    if (isPlugin.Count() > 0)
+                    {
+                        foreach (var t in types)
+                        {
+                            // only classes that inherit from Autofac.Module have to be registered
+                            if (t.IsClass && moduleType.IsAssignableFrom(t))
+                            {
+                                // the RegisterModule only takes a instance of an object
+                                var instance = Activator.CreateInstance(t);
+                                builder.RegisterModule(instance as Module);
+                            }
+                        }
+                    }
+                }
             }
 
-            return list;
+            return builder.Build();
         }
     }
 }

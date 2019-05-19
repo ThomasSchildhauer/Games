@@ -39,7 +39,7 @@ namespace GamesUI.ViewModels
             foreach (var p in _plugins)
             {
                 var template = templatesFunc(p);
-                
+
                 _pluginTemplates.Add(template);
             }
         }

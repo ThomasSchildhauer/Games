@@ -16,19 +16,19 @@ namespace Games.Plugin.Sudoku
         private static readonly log4net.ILog log = LogHelper.GetNewLogger();
         public string Name { get; } = "Sudoku";
 
-        //private ISudokuPlugin _sudokuPlugin;
+        private ISudokuPlugin _sudokuPlugin;
 
-        //public StartSudokuPlugin(ISudokuPlugin sudokuPlugin)
-        //{
-        //    _sudokuPlugin = sudokuPlugin;
-        //}
+        public StartSudokuPlugin(ISudokuPlugin sudokuPlugin)
+        {
+            _sudokuPlugin = sudokuPlugin;
+        }
 
         public void OnStartup()
         {
 
             log.Debug("Start: Start Games Plugin Sudoku");
 
-            //Task.Run(() => _sudokuPlugin.RunAsync());
+            Task.Run(() => _sudokuPlugin.RunAsync());
 
             //var container = Container.Container.Config();
 

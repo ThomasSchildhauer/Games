@@ -81,6 +81,7 @@
     <Compile Include="Loader\MainWindowViewLoader.cs" />
     <Compile Include="Templates\IPluginsTemplate.cs" />
     <Compile Include="Templates\PluginsTemplate.cs" />
+    <Compile Include="ViewModels\IMainWindowViewModel.cs" />
     <Compile Include="ViewModels\IPluginViewModel.cs" />
     <Compile Include="Views\PluginView.xaml.cs">
       <DependentUpon>PluginView.xaml</DependentUpon>
@@ -100,7 +101,6 @@
     <Compile Include="Loader\PluginLoader.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Programm.cs" />
-    <Compile Include="ViewModels\IMainWindowViewModel.cs" />
     <Compile Include="ViewModels\PluginViewModel.cs" />
     <Compile Include="Views\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
