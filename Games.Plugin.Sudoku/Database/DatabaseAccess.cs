@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Games.Plugin.Sudoku.Database;
 using Games.Plugin.Sudoku.Events;
-using Base.LogHelper;
+using GamesUI.Helper;
 
 namespace Games.Plugin.Sudoku.Database
 {

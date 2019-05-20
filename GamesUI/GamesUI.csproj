@@ -77,6 +77,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper\LogHelper.cs" />
+    <Compile Include="PluginInterfaces\IPlugin.cs" />
     <Compile Include="Loader\IMainWindowViewLoader.cs" />
     <Compile Include="Loader\MainWindowViewLoader.cs" />
     <Compile Include="Templates\IPluginsTemplate.cs" />
@@ -138,12 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Base\Base.csproj">
-      <Project>{894c38b9-9c69-4b05-bcc9-288565a986cb}</Project>
-      <Name>Base</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

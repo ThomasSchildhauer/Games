@@ -1,5 +1,5 @@
 ﻿using Autofac.Features.Metadata;
-using Base.Interfaces;
+using GamesUI.PluginInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +10,8 @@ namespace GamesUI.Loader
 {
     public class PluginLoader : IPluginLoader
     {
-        private IEnumerable<Meta<IGamesPlugin>> _plugins;
-        public PluginLoader(IEnumerable<Meta<IGamesPlugin>> plugins)
+        private IEnumerable<Meta<IPlugin>> _plugins;
+        public PluginLoader(IEnumerable<Meta<IPlugin>> plugins)
         {
             _plugins = plugins;
         }

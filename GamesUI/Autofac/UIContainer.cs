@@ -1,6 +1,6 @@
 ﻿using Autofac;
-using Base.Interfaces;
 using GamesUI.Loader;
+using GamesUI.PluginInterfaces;
 using GamesUI.Templates;
 using GamesUI.ViewModels;
 using GamesUI.Views;
@@ -21,24 +21,13 @@ namespace GamesUI.Autofac
         {
             var builder = new ContainerBuilder();
 
-            // Register Types
-            // Programm start
-            builder.RegisterType<Programm>().As<IProgramm>();
-            builder.RegisterType<MainWindowViewLoader>().As<IMainWindowViewLoader>();
-            builder.RegisterType<MainWindowViewModel>().As<IMainWindowViewModel>();
-            builder.RegisterType<MainWindowView>().AsSelf();
-            builder.RegisterType<PluginsTemplate>().As<IPluginsTemplate>();
-            builder.RegisterType<PluginViewModel>().As<IPluginViewModel>();
-            builder.RegisterType<PluginView>().AsSelf();
-
-
             //######################//
             // Dynamic registration //
             //######################//
             string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             // Plugin Registration
-            var myType = typeof(IGamesPlugin);
+            var myType = typeof(IPlugin);
 
             // Check if Directory exists
             if (Directory.Exists(path))
@@ -53,8 +42,8 @@ namespace GamesUI.Autofac
 
                     // export all types from the current assembly
                     IEnumerable<Type> types = assembly.ExportedTypes;
-
-                    foreach (var t in types)
+                    
+                    foreach (Type t in types)
                     {
                         // check if the type meets the criterias: type is a class and type is inherited from myType
                         if (t.IsClass && myType.IsAssignableFrom(t))
@@ -62,6 +51,12 @@ namespace GamesUI.Autofac
                             // add types that meet all criterias to a list
                             _types.Add(t);
                         }
+
+                        //if (t.IsClass && t.IsAssignableFrom(myType))
+                        //{
+                        //    // add types that meet all criterias to a list
+                        //    _types.Add(t);
+                        //}
                     }
                 }
 
@@ -69,7 +64,7 @@ namespace GamesUI.Autofac
                 foreach (var t in _types)
                 {
                     builder.RegisterType(t)
-                        .As<IGamesPlugin>()
+                        .As<IPlugin>()
                         .WithMetadata("TypeName", t.Name)
                         .SingleInstance();
                 }
@@ -115,6 +110,18 @@ namespace GamesUI.Autofac
                     }
                 }
             }
+
+
+            // Register Types
+            // Programm start
+            builder.RegisterType<Programm>().As<IProgramm>();
+            builder.RegisterType<MainWindowViewLoader>().As<IMainWindowViewLoader>();
+            builder.RegisterType<MainWindowViewModel>().As<IMainWindowViewModel>();
+            builder.RegisterType<MainWindowView>().AsSelf();
+            builder.RegisterType<PluginsTemplate>().As<IPluginsTemplate>();
+            builder.RegisterType<PluginViewModel>().As<IPluginViewModel>();
+            builder.RegisterType<PluginView>().AsSelf();
+
 
             return builder.Build();
         }

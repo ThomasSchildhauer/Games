@@ -1,5 +1,4 @@
 ﻿using Autofac.Features.Metadata;
-using Base.Interfaces;
 using GamesUI.Loader;
 using GamesUI.ViewModels;
 using GamesUI.Views;

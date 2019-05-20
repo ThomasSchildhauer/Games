@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Base.Handler;
 using Games.Plugin.Sudoku.Container;
 using Games.Plugin.Sudoku.Events;
 using Games.Plugin.Sudoku.GameSudoku.NewGame;

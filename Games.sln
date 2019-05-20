@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GamesAPI", "GamesAPI\GamesA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GamesUI", "GamesUI\GamesUI.csproj", "{F0B4E0E5-981F-4F66-89F5-2FA33E3915B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games.Plugin.Random", "Games.Plugin.Random\Games.Plugin.Random.csproj", "{AF5D8400-96F4-48CC-A091-063AF9825425}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,12 +49,17 @@ Global
 		{F0B4E0E5-981F-4F66-89F5-2FA33E3915B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0B4E0E5-981F-4F66-89F5-2FA33E3915B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0B4E0E5-981F-4F66-89F5-2FA33E3915B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF5D8400-96F4-48CC-A091-063AF9825425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF5D8400-96F4-48CC-A091-063AF9825425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF5D8400-96F4-48CC-A091-063AF9825425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF5D8400-96F4-48CC-A091-063AF9825425}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{458A5264-4256-43B3-91BC-0C12629F6048} = {BC66F439-BD4C-446C-BF9D-1C8E400C4203}
+		{AF5D8400-96F4-48CC-A091-063AF9825425} = {BC66F439-BD4C-446C-BF9D-1C8E400C4203}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0E269D3D-4882-4DCC-854E-91EDA34D262E}

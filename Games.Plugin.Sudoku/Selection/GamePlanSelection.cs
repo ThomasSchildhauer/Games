@@ -1,5 +1,5 @@
-﻿using Base.LogHelper;
-using Games.Plugin.Sudoku.Database;
+﻿using Games.Plugin.Sudoku.Database;
+using GamesUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;

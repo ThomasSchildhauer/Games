@@ -1,7 +1,7 @@
 ﻿using Autofac.Features.Metadata;
-using Base.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using GamesUI.PluginInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +18,9 @@ namespace GamesUI.Templates
 
         public ICommand ButtonCommand { get; }
 
-        private Meta<IGamesPlugin> _plugin;
+        private Meta<IPlugin> _plugin;
 
-        public PluginsTemplate(Meta<IGamesPlugin> plugin)
+        public PluginsTemplate(Meta<IPlugin> plugin)
         {
             _plugin = plugin;
             ButtonText = _plugin.Value.Name;

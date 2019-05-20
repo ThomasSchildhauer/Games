@@ -111,9 +111,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Base\Base.csproj">
-      <Project>{894c38b9-9c69-4b05-bcc9-288565a986cb}</Project>
-      <Name>Base</Name>
+    <ProjectReference Include="..\GamesUI\GamesUI.csproj">
+      <Project>{f0b4e0e5-981f-4f66-89f5-2fa33e3915b9}</Project>
+      <Name>GamesUI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Base.Handler;
 using Games.Plugin.Sudoku.Database;
 using Games.Plugin.Sudoku.GamePlan;
 using Games.Plugin.Sudoku.GamePlan.Compare;
@@ -33,7 +32,7 @@ namespace Games.Plugin.Sudoku.Container
             builder.RegisterType<CompareGamePlans>().As<ICompareGamePlans>();
             builder.RegisterType<NewGameViewModel>().As<INewGameViewModel>();
             builder.RegisterType<GameSudokuViewModel>().As<IGameSudokuViewModel>();
-            builder.RegisterType<CommandHandler>().As<ICommand>();
+            //builder.RegisterType<CommandHandler>().As<ICommand>();
 
             return builder.Build();
         }

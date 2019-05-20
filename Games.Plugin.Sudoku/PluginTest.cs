@@ -1,4 +1,4 @@
-﻿using Base.Interfaces;
+﻿using GamesUI.PluginInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Games.Plugin.Sudoku
 {
-    public class PluginTest //: IGamesPlugin
+    public class PluginTest : IPlugin
     {
-        public string Name { get; } = "Test Plugin";
+        public string Name => throw new NotImplementedException();
 
         public void OnStartup()
         {

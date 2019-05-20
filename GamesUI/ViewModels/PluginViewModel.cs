@@ -1,8 +1,8 @@
 ﻿using Autofac.Features.Metadata;
-using Base.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GamesUI.Loader;
+using GamesUI.PluginInterfaces;
 using GamesUI.Templates;
 using System;
 using System.Collections.Generic;
@@ -24,12 +24,12 @@ namespace GamesUI.ViewModels
             }
         }
 
-        private IEnumerable<Meta<IGamesPlugin>> _plugins;
+        private IEnumerable<Meta<IPlugin>> _plugins;
         //private Func<Meta<IGamesPlugin>, IPluginsTemplate> _templatesFunc;
 
         public PluginViewModel(
-            IEnumerable<Meta<IGamesPlugin>> plugins,
-            Func<Meta<IGamesPlugin>, IPluginsTemplate> templatesFunc,
+            IEnumerable<Meta<IPlugin>> plugins,
+            Func<Meta<IPlugin>, IPluginsTemplate> templatesFunc,
             IEnumerable<IPluginsTemplate> pluginTemplates)
         {
             _plugins = plugins;
