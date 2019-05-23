@@ -140,11 +140,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Base\Base.csproj">
+    <ProjectReference Include="..\GamesBase\GamesBase.csproj">
       <Project>{894c38b9-9c69-4b05-bcc9-288565a986cb}</Project>
-      <Name>Base</Name>
+      <Name>GamesBase</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

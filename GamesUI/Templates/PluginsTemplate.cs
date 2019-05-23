@@ -1,12 +1,6 @@
 ﻿using Autofac.Features.Metadata;
-using Base.Interfaces;
-using GalaSoft.MvvmLight;
+using GamesBase.Interfaces;
 using GalaSoft.MvvmLight.CommandWpf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace GamesUI.Templates

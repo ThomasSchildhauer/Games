@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Autofac;
-using Base.Handler;
+using GamesBase.Handler;
 using Games.Plugin.Sudoku.Database;
 using Games.Plugin.Sudoku.GamePlan;
 using Games.Plugin.Sudoku.GamePlan.Compare;

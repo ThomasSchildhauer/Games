@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using Base.Handler;
+using GamesBase.Handler;
 using Games.Plugin.Sudoku.Events;
 using System;
 using System.Collections.Generic;
@@ -91,10 +91,9 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
             set => ChangedProperty(value, ref _difficulty);
         }
 
-        public NewGameViewModel()
+        public NewGameViewModel(Func<Action, bool, ICommand> commandFactory)
         {
-            _scope = Container.ContainerScope.Scope;
-            _commandFactory = _scope.Resolve<Func<Action, bool, ICommand>>();
+            _commandFactory = commandFactory;
         }
     }
 }

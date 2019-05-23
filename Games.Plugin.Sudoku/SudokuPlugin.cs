@@ -1,14 +1,9 @@
-﻿using Autofac;
-using Base.LogHelper;
-using Games.Plugin.Sudoku.Container;
+﻿using GamesBase.LogHelper;
 using Games.Plugin.Sudoku.Database;
 using Games.Plugin.Sudoku.GamePlan;
 using Games.Plugin.Sudoku.GameSudoku;
 using Games.Plugin.Sudoku.GameSudoku.NewGame;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 

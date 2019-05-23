@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Base.Handler
+namespace GamesBase.Handler
 {
     public class CommandHandler : ICommand
     {

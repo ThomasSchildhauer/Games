@@ -1,4 +1,4 @@
-﻿using Base.LogHelper;
+﻿using GamesBase.LogHelper;
 using Games.Plugin.Sudoku.Database;
 using System;
 using System.Collections.Generic;

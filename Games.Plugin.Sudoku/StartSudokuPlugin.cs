@@ -1,20 +1,13 @@
-﻿using Autofac.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Games.Plugin.Sudoku.Container;
-using Autofac;
-using Base.LogHelper;
-using Base.Interfaces;
+﻿using System.Threading.Tasks;
+using GamesBase.LogHelper;
+using GamesBase.Interfaces;
 
 namespace Games.Plugin.Sudoku
 {
     public class StartSudokuPlugin : IGamesPlugin
     {
         private static readonly log4net.ILog log = LogHelper.GetNewLogger();
-        public string Name { get; } = "Sudoku";
+        public string Name { get; set; } = "Sudoku";
 
         private ISudokuPlugin _sudokuPlugin;
 

@@ -1,4 +1,4 @@
-﻿using Base.Handler;
+﻿using GamesBase.Handler;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GamesUI.Views;

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Games.Plugin.Sudoku</RootNamespace>
     <AssemblyName>Games.Plugin.Sudoku</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -57,8 +57,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Container\Container.cs" />
-    <Compile Include="Container\ContainerScope.cs" />
     <Compile Include="Database\DatabaseAccess.cs" />
     <Compile Include="Database\IDatabase.cs" />
     <Compile Include="Database\IDatabaseAccess.cs" />
@@ -83,7 +81,6 @@
     <Compile Include="GameSudoku\NewGame\NewGameViewModel.cs" />
     <Compile Include="ISudokuPlugin.cs" />
     <Compile Include="Module\SudokuModule.cs" />
-    <Compile Include="PluginTest.cs" />
     <Compile Include="Selection\GamePlanSelection.cs" />
     <Compile Include="StartSudokuPlugin.cs" />
     <Compile Include="SudokuPlugin.cs" />
@@ -111,9 +108,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Base\Base.csproj">
+    <ProjectReference Include="..\GamesBase\GamesBase.csproj">
       <Project>{894c38b9-9c69-4b05-bcc9-288565a986cb}</Project>
-      <Name>Base</Name>
+      <Name>GamesBase</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

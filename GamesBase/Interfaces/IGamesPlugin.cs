@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Base.Interfaces
+namespace GamesBase.Interfaces
 {
     public interface IGamesPlugin
     {

@@ -1,5 +1,5 @@
 ﻿using Autofac.Features.Metadata;
-using Base.Interfaces;
+using GamesBase.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
