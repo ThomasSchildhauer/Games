@@ -1,5 +1,6 @@
 ﻿using Autofac;
-using GamesBase.Handler;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
 using Games.Plugin.Sudoku.Events;
 using System;
 using System.Collections.Generic;
@@ -11,20 +12,17 @@ using System.Windows.Input;
 
 namespace Games.Plugin.Sudoku.GameSudoku.NewGame
 {
-    public class NewGameViewModel : OnPropertyCange, INewGameViewModel
+    public class NewGameViewModel : ViewModelBase, INewGameViewModel
     {
         private readonly bool _canExecute = true;
         private int _difficulty;
-
-        private ILifetimeScope _scope;
-        private Func<Action, bool, ICommand> _commandFactory;
 
         public event EventHandler SetDifficulty;
 
         public int SelectedGameDifficulty
         {
             get => _difficulty;
-            set => ChangedProperty(value, ref _difficulty);
+            set => Set(nameof(Difficulty), ref _difficulty, value);
         }
 
         private bool _okButtonIsEnabled;
@@ -32,68 +30,66 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
         public bool OkButtonIsEnabled
         {
             get => _okButtonIsEnabled;
-            set => ChangedProperty(value, ref _okButtonIsEnabled);
+            set => Set(nameof(OkButtonIsEnabled), ref _okButtonIsEnabled, value);
         }
 
 
-        public ICommand ButtonClickHard
-        {
-            get => _commandFactory(() =>
-            {
-                SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Hard;
-                OkButtonIsEnabled = true;
-            }
-            , _canExecute);
-        }
+        public ICommand ButtonClickHard;
 
-        public ICommand ButtonClickMiddle
-        {
-            get => _commandFactory(() =>
-            {
-                SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Middle;
-                OkButtonIsEnabled = true;
-            }
-            , _canExecute);
-        }
+        public ICommand ButtonClickMiddle;
 
-        public ICommand ButtonClickEasy
-        {
-            get => _commandFactory(() =>
-            {
-                SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Easy;
-                OkButtonIsEnabled = true;
-            }
-            , _canExecute);
-        }
+        public ICommand ButtonClickEasy;
 
-        public ICommand ButtonClickOk
-        {
-            get => _commandFactory(() =>
-            {
-                SetDifficulty?.Invoke(this, EventArgs.Empty);
-            }
-            , _canExecute);
-        }
+        public ICommand ButtonClickOk;
 
-        public ICommand ButtonClickCancel
-        {
-            get => _commandFactory(() =>
-            {
-                SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Default;
-            }
-            , _canExecute);
-        }
+        public ICommand ButtonClickCancel;
 
         public int Difficulty
         {
             get => _difficulty;
 
-            set => ChangedProperty(value, ref _difficulty);
+            set => Set(nameof(Difficulty), ref _difficulty, value);
         }
 
-        public NewGameViewModel(Func<Action, bool, ICommand> commandFactory)
+        public NewGameViewModel()
         {
-            _commandFactory = commandFactory;
+            InitCommands();
+        }
+
+        private void InitCommands()
+        {
+            ButtonClickHard = new RelayCommand(() =>
+            {
+                SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Hard;
+                OkButtonIsEnabled = true;
+            }
+            , _canExecute);
+
+            ButtonClickMiddle = new RelayCommand(() =>
+            {
+                SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Middle;
+                OkButtonIsEnabled = true;
+            }
+            , _canExecute);
+
+            ButtonClickEasy = new RelayCommand(() =>
+            {
+                SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Easy;
+                OkButtonIsEnabled = true;
+            }
+            , _canExecute);
+
+            ButtonClickOk = new RelayCommand(() =>
+            {
+                SetDifficulty?.Invoke(this, EventArgs.Empty);
+            }
+            , _canExecute);
+
+            ButtonClickCancel = new RelayCommand(() =>
+            {
+                SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Default;
+            }
+            , _canExecute);
         }
     }
 }

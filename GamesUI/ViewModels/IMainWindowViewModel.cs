@@ -4,8 +4,10 @@ namespace GamesUI.ViewModels
 {
     public interface IMainWindowViewModel
     {
-        ICommand Login { get; }
+        ICommand LoginCommand { get; }
+        ILoginViewModel LoginViewModel { get; }
+        ICommand PluginsCommand { get; }
         IPluginViewModel PluginViewModel { get; set; }
-        ICommand Refresh { get; }
+        ICommand RefreshCommand { get; }
     }
 }

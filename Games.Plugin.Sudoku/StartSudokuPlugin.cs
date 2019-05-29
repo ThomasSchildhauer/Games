@@ -18,21 +18,9 @@ namespace Games.Plugin.Sudoku
 
         public void OnStartup()
         {
-
             log.Debug("Start: Start Games Plugin Sudoku");
 
             Task.Run(() => _sudokuPlugin.RunAsync());
-
-            //var container = Container.Container.Config();
-
-            //using (ContainerScope.Scope = container.BeginLifetimeScope())
-            //{
-            //    log.Debug("Start: Resolve ISudokuPlugin");
-
-            //    var app = ContainerScope.Scope.Resolve<ISudokuPlugin>();
-
-            //    Task.Run(() => app.RunAsync());
-            //}
         }
     }
 }

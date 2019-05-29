@@ -58,28 +58,31 @@ namespace GamesUI.Autofac
                     }
                 }
 
-                // this is for autofac module registration
-                foreach(var a in _assembly)
+                if (_types.Count > 0)
                 {
-                    IEnumerable<Type> autofacModules = a.ExportedTypes;
-
-                    foreach(var t in autofacModules)
+                    // this is for autofac module registration
+                    foreach (var a in _assembly)
                     {
-                        if (t.IsClass && moduleType.IsAssignableFrom(t))
+                        IEnumerable<Type> autofacModules = a.ExportedTypes;
+
+                        foreach (var t in autofacModules)
                         {
-                            var instance = Activator.CreateInstance(t);
-                            builder.RegisterModule(instance as Module);
+                            if (t.IsClass && moduleType.IsAssignableFrom(t))
+                            {
+                                var instance = Activator.CreateInstance(t);
+                                builder.RegisterModule(instance as Module);
+                            }
                         }
                     }
-                }
 
-                // register all types in the List
-                foreach (var t in _types)
-                {
-                    builder.RegisterType(t)
-                        .As<IGamesPlugin>()
-                        .WithMetadata("TypeName", t.Name)
-                        .SingleInstance();
+                    // register all types in the List
+                    foreach (var t in _types)
+                    {
+                        builder.RegisterType(t)
+                            .As<IGamesPlugin>()
+                            .WithMetadata("TypeName", t.Name)
+                            .SingleInstance();
+                    }
                 }
             }
 
@@ -91,6 +94,7 @@ namespace GamesUI.Autofac
             builder.RegisterType<MainWindowView>().AsSelf();
             builder.RegisterType<PluginsTemplate>().As<IPluginsTemplate>();
             builder.RegisterType<PluginViewModel>().As<IPluginViewModel>();
+            builder.RegisterType<LoginViewModel>().As<ILoginViewModel>();
             builder.RegisterType<PluginView>().AsSelf();
 
 

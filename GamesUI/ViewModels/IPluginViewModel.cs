@@ -6,5 +6,6 @@ namespace GamesUI.ViewModels
     public interface IPluginViewModel
     {
         List<IPluginsTemplate> PluginTemplates { get; }
+        bool Visible { get; set; }
     }
 }

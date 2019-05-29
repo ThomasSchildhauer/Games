@@ -8,14 +8,22 @@
         xmlns:v ="clr-namespace:GamesUI.Views"
         mc:Ignorable="d"
         Title="Games">
-
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
     <DockPanel>
         <Menu DockPanel.Dock="Top" FontSize="18">
             <MenuItem Header="_Account">
-                <MenuItem x:Name="LoginView" Header="_Login"/>
+                <MenuItem Command="{Binding LoginCommand}" Header="_Login"/>
             </MenuItem>
             <MenuItem Header="_Reload"/>
+            <MenuItem Header="_Games">
+                <MenuItem Command="{Binding PluginsCommand}" Header="_Show"/>
+            </MenuItem>
         </Menu>
-        <v:PluginView DataContext="{Binding PluginViewModel}"/>
+        <Grid>
+            <v:PluginView DataContext="{Binding PluginViewModel}" Visibility="{Binding Visible, Converter={StaticResource BoolToVis}}"/>
+            <v:LoginView DataContext="{Binding LoginViewModel}" Visibility="{Binding Visible, Converter={StaticResource BoolToVis}}"/>
+        </Grid>
     </DockPanel>
 </Window>

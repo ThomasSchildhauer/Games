@@ -1,5 +1,6 @@
 ﻿using Autofac;
-using GamesBase.Handler;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
 using Games.Plugin.Sudoku.Events;
 using Games.Plugin.Sudoku.GameSudoku.NewGame;
 using System;
@@ -12,27 +13,26 @@ using System.Windows.Input;
 
 namespace Games.Plugin.Sudoku.GameSudoku
 {
-    public class GameSudokuViewModel : OnPropertyCange, IGameSudokuViewModel
+    public class GameSudokuViewModel : ViewModelBase, IGameSudokuViewModel
     {
-        private Func<Action, bool, ICommand> _commandFactory;
-        private NewGameView _newGameView;
         private readonly bool _isExecutable = true;
-        private INewGameViewModel _newGameViewModel;
         public int MyProperty { get; set; }
 
         public event EventHandler OpenNewGame;
 
-        public ICommand NewGameCommand
+        public ICommand NewGameCommand;
+
+        public GameSudokuViewModel()
         {
-            get => _commandFactory(() =>
+            InitCommands();
+        }
+
+        private void InitCommands()
+        {
+            NewGameCommand = new RelayCommand(() =>
             {
                 OpenNewGame?.Invoke(this, EventArgs.Empty);
             }, _isExecutable);
-        }
-
-        public GameSudokuViewModel(Func<Action, bool, ICommand> commandFactory)
-        {
-            _commandFactory = commandFactory;
         }
     }
 }

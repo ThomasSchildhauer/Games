@@ -1,5 +1,4 @@
-﻿using GamesBase.Handler;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GamesUI.Views;
 using System;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using GamesUI.Messages;
 
 namespace GamesUI.ViewModels
 {
@@ -15,14 +15,27 @@ namespace GamesUI.ViewModels
     {
         private static readonly log4net.ILog log = Logger.GetNewLogger();
 
-        public ICommand Login
+        public ICommand LoginCommand
         {
-            get => new RelayCommand(() => log.Debug("Login"));
+            get => new RelayCommand(() =>
+            {
+                _loginViewModel.Visible = true;
+                MessengerInstance.Send(new ControleVisible(nameof(LoginViewModel)));
+            });
         }
 
-        public ICommand Refresh
+        public ICommand RefreshCommand
         {
             get => new RelayCommand(() => log.Debug("Refresh"));
+        }
+
+        public ICommand PluginsCommand
+        {
+            get => new RelayCommand(() => 
+            {
+                _pluginViewModel.Visible = true;
+                MessengerInstance.Send(new ControleVisible(nameof(PluginViewModel)));
+            });
         }
 
         private IPluginViewModel _pluginViewModel;
@@ -32,19 +45,30 @@ namespace GamesUI.ViewModels
             get => _pluginViewModel;
             set
             {
-                Set(nameof(PluginViewModel), ref _pluginViewModel);
+                Set(nameof(PluginViewModel), ref _pluginViewModel, value);
             }
         }
 
-        public MainWindowViewModel(IPluginViewModel pluginViewModel)
+        private ILoginViewModel _loginViewModel;
+
+        public ILoginViewModel LoginViewModel
+        {
+            get => _loginViewModel;
+            private set
+            {
+                Set(nameof(LoginViewModel), ref _loginViewModel, value);
+            }
+        }
+
+        public MainWindowViewModel(
+            IPluginViewModel pluginViewModel,
+            ILoginViewModel loginViewModel)
         {
             log.Debug("Start Games Programm");
             _pluginViewModel = pluginViewModel;
-        }
+            _loginViewModel = loginViewModel;
 
-        public MainWindowViewModel()
-        {
-            _pluginViewModel = new PluginViewModel();
+
         }
     }
 }

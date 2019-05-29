@@ -1,4 +1,5 @@
-﻿using Games.Plugin.Sudoku.Events;
+﻿using GalaSoft.MvvmLight;
+using Games.Plugin.Sudoku.Events;
 using Games.Plugin.Sudoku.GamePlan.Compare;
 using System;
 using System.Collections;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Games.Plugin.Sudoku.GamePlan
 {
-    public class GamePlanViewModel : OnPropertyCange, IGamePlanViewModel
+    public class GamePlanViewModel : ViewModelBase, IGamePlanViewModel
     {
         //Variables and Properties
         private readonly ICompareGamePlans _compareGamePlans;
@@ -19,21 +20,21 @@ namespace Games.Plugin.Sudoku.GamePlan
         public string PlanId
         {
             get => _planId;
-            set => ChangedProperty(value, ref _planId);
+            set => Set(nameof(PlanId), ref _planId, value);
         }
 
         private int[,] _gamePlan;
         public int[,] GamePlan
         {
             get => _gamePlan;
-            set => ChangedProperty<int[,]>(value, ref _gamePlan);
+            set => Set<int[,]>(nameof(GamePlan), ref _gamePlan, value);
         }
 
         private bool[,] _gameStartView;
         public bool[,] GameStartView
         {
             get => _gameStartView;
-            set => ChangedProperty<bool[,]>(value, ref _gameStartView);
+            set => Set<bool[,]>(nameof(GameStartView), ref _gameStartView, value);
         }
 
         private bool _ucIsVisible = false;
@@ -41,7 +42,7 @@ namespace Games.Plugin.Sudoku.GamePlan
         public bool UcIsVisible
         {
             get => _ucIsVisible;
-            set => ChangedProperty(value, ref _ucIsVisible);
+            set => Set(nameof(UcIsVisible), ref _ucIsVisible, value);
         }
 
         //Constructor

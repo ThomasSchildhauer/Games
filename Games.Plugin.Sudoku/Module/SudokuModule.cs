@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Autofac;
-using GamesBase.Handler;
 using Games.Plugin.Sudoku.Database;
 using Games.Plugin.Sudoku.GamePlan;
 using Games.Plugin.Sudoku.GamePlan.Compare;
@@ -30,7 +29,6 @@ namespace Games.Plugin.Sudoku.Module
             builder.RegisterType<CompareGamePlans>().As<ICompareGamePlans>();
             builder.RegisterType<NewGameViewModel>().As<INewGameViewModel>();
             builder.RegisterType<GameSudokuViewModel>().As<IGameSudokuViewModel>();
-            builder.RegisterType<CommandHandler>().As<ICommand>();
         }
     }
 }
