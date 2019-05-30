@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Games.Plugin.Sudoku.GameSudoku.NewGame;
 
 namespace Games.Plugin.Sudoku.GameSudoku
 {
     public interface IGameSudokuViewModel
     {
-        int MyProperty { get; set; }
-
-        event EventHandler OpenNewGame;
+        INewGameViewModel NewGameViewModel { get; }
     }
 }

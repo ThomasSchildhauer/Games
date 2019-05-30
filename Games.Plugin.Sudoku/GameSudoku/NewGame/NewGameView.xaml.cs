@@ -18,16 +18,15 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
     /// <summary>
     /// Interaction logic for NewGameView.xaml
     /// </summary>
-    public partial class NewGameView : Window
+    public partial class NewGameView : UserControl
     {
         public NewGameView()
         {
             InitializeComponent();
-            //DataContext = new NewGameViewModel(this);
         }
-        //public NewGameView(INewGameViewModel newGameViewModel)
-        //{
-
-        //}
+        public NewGameView(INewGameViewModel newGameViewModel) : this()
+        {
+            DataContext = newGameViewModel;
+        }
     }
 }

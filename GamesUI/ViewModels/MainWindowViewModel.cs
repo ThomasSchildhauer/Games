@@ -33,6 +33,7 @@ namespace GamesUI.ViewModels
         {
             get => new RelayCommand(() => 
             {
+                
                 _pluginViewModel.Visible = true;
                 MessengerInstance.Send(new ControleVisible(nameof(PluginViewModel)));
             });

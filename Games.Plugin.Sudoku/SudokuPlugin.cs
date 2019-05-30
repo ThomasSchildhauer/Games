@@ -44,7 +44,7 @@ namespace Games.Plugin.Sudoku
             _gamePlanView.DataContext = _gamePlanViewModel;
 
             // Events
-            _gameSudokuViewModel.OpenNewGame += OpenNewGameView;
+            //_gameSudokuViewModel.OpenNewGame += OpenNewGameView;
             OpenGameSudokuView();
         }
 
@@ -63,7 +63,7 @@ namespace Games.Plugin.Sudoku
         private void OpenNewGameView(object sender, EventArgs e)
         {
             _newGameView.InitializeComponent();
-            _newGameView.Show();
+            //_newGameView.Show();
         }
 
         public async Task RunAsync()
@@ -81,7 +81,7 @@ namespace Games.Plugin.Sudoku
 
         public void ProceedAfterDifficultyChosen(object sender, EventArgs e)
         {
-            SystemCommands.CloseWindow(_newGameView);
+            //SystemCommands.CloseWindow(_newGameView);
         }
     }
 }

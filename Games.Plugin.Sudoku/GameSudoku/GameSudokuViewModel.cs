@@ -16,14 +16,15 @@ namespace Games.Plugin.Sudoku.GameSudoku
     public class GameSudokuViewModel : ViewModelBase, IGameSudokuViewModel
     {
         private readonly bool _isExecutable = true;
-        public int MyProperty { get; set; }
 
-        public event EventHandler OpenNewGame;
+        public INewGameViewModel NewGameViewModel { get; }
 
         public ICommand NewGameCommand;
+        //public event EventHandler OpenNewGame;
 
-        public GameSudokuViewModel()
+        public GameSudokuViewModel(INewGameViewModel newGameViewModel)
         {
+            NewGameViewModel = newGameViewModel;
             InitCommands();
         }
 
@@ -31,7 +32,7 @@ namespace Games.Plugin.Sudoku.GameSudoku
         {
             NewGameCommand = new RelayCommand(() =>
             {
-                OpenNewGame?.Invoke(this, EventArgs.Empty);
+                // ToDo here is something missing
             }, _isExecutable);
         }
     }

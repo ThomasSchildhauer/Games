@@ -6,10 +6,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GamesUI.Messages;
+using GamesBase.Messages;
+using GamesBase.ViewModel;
 
 namespace GamesUI.ViewModels
 {
-    public class PluginViewModel : ViewModelBase, IPluginViewModel
+    public class PluginViewModel : ViewModelVisibilityBase, IPluginViewModel
     {
         private List<IPluginsTemplate> _pluginTemplates;
 
@@ -22,16 +24,7 @@ namespace GamesUI.ViewModels
             }
         }
 
-        private bool _visible;
-
-        public bool Visible
-        {
-            get => _visible;
-            set
-            {
-                Set(nameof(Visible), ref _visible, value);
-            }
-        }
+        public override bool Visible { get => base.Visible; set => base.Visible = value; }
 
         private IEnumerable<Meta<IGamesPlugin>> _plugins;
 
@@ -49,20 +42,6 @@ namespace GamesUI.ViewModels
                 var template = templatesFunc(p);
 
                 _pluginTemplates.Add(template);
-            }
-
-            MessengerInstance.Register<ControleVisible>(this, CheckVisibility);
-        }
-
-        private void CheckVisibility(ControleVisible controleVisible)
-        {
-            if (string.Compare(controleVisible.Owner, nameof(PluginViewModel)) == 0)
-            {
-                Visible = true;
-            }
-            else
-            {
-                Visible = false;
             }
         }
     }

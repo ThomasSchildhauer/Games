@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using GamesBase.Interfaces;
+using GamesBase.Messages;
 using GamesUI.Loader;
 using GamesUI.Templates;
 using GamesUI.ViewModels;
@@ -93,10 +94,10 @@ namespace GamesUI.Autofac
             builder.RegisterType<MainWindowViewModel>().As<IMainWindowViewModel>();
             builder.RegisterType<MainWindowView>().AsSelf();
             builder.RegisterType<PluginsTemplate>().As<IPluginsTemplate>();
+            //builder.RegisterType<ControleHelper>().As<IControleHelper>();
             builder.RegisterType<PluginViewModel>().As<IPluginViewModel>();
             builder.RegisterType<LoginViewModel>().As<ILoginViewModel>();
             builder.RegisterType<PluginView>().AsSelf();
-
 
             return builder.Build();
         }

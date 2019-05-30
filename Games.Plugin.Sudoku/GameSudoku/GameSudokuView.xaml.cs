@@ -24,5 +24,10 @@ namespace Games.Plugin.Sudoku.GameSudoku
         {
             InitializeComponent();
         }
+
+        public GameSudokuView(IGameSudokuViewModel gameSudokuViewModel) : this()
+        {
+            DataContext = gameSudokuViewModel;
+        }
     }
 }
