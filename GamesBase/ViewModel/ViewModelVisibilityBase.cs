@@ -12,7 +12,9 @@ namespace GamesBase.ViewModel
     {
         private bool _visible;
 
-        public virtual bool Visible
+        private string _viewModelName;
+
+        public bool Visible
         {
             get => _visible;
             set
@@ -21,14 +23,14 @@ namespace GamesBase.ViewModel
             }
         }
 
-        public ViewModelVisibilityBase()
+        public ViewModelVisibilityBase(string viewModelName)
         {
-            MessengerInstance.Register<ControleVisible>(this, CheckVisibility);
+            _viewModelName = viewModelName;
         }
 
-        private void CheckVisibility(ControleVisible controleVisible)
+        protected void CheckVisibility(ControleVisible controleVisible)
         {
-            if (string.Compare(controleVisible.Owner, nameof(ViewModel)) == 0)
+            if (string.Compare(controleVisible.Owner, _viewModelName) == 0)
             {
                 Visible = true;
             }

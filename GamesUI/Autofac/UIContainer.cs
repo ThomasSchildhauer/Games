@@ -98,6 +98,7 @@ namespace GamesUI.Autofac
             builder.RegisterType<PluginViewModel>().As<IPluginViewModel>();
             builder.RegisterType<LoginViewModel>().As<ILoginViewModel>();
             builder.RegisterType<PluginView>().AsSelf();
+            builder.RegisterType<UIViewModelToken>().AsSelf().SingleInstance();
 
             return builder.Build();
         }

@@ -87,7 +87,6 @@
     <Compile Include="Helper\APIHelper.cs" />
     <Compile Include="Loader\IMainWindowViewLoader.cs" />
     <Compile Include="Loader\MainWindowViewLoader.cs" />
-    <Compile Include="Messages\ControleVisible.cs" />
     <Compile Include="Models\AuthenticatedUser.cs" />
     <Compile Include="Templates\IPluginsTemplate.cs" />
     <Compile Include="Templates\PluginsTemplate.cs" />

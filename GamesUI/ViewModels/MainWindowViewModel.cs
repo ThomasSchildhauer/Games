@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using GamesBase.Messages;
 using GamesUI.Views;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using GamesUI.Messages;
 
 namespace GamesUI.ViewModels
 {
@@ -15,12 +15,14 @@ namespace GamesUI.ViewModels
     {
         private static readonly log4net.ILog log = Logger.GetNewLogger();
 
+        private UIViewModelToken _token;
+
         public ICommand LoginCommand
         {
             get => new RelayCommand(() =>
             {
-                _loginViewModel.Visible = true;
-                MessengerInstance.Send(new ControleVisible(nameof(LoginViewModel)));
+                //_loginViewModel.Visible = true;
+                MessengerInstance.Send(new ControleVisible(nameof(LoginViewModel)), _token);
             });
         }
 
@@ -32,10 +34,8 @@ namespace GamesUI.ViewModels
         public ICommand PluginsCommand
         {
             get => new RelayCommand(() => 
-            {
-                
-                _pluginViewModel.Visible = true;
-                MessengerInstance.Send(new ControleVisible(nameof(PluginViewModel)));
+            {               
+                MessengerInstance.Send(new ControleVisible(nameof(PluginViewModel)), _token);
             });
         }
 
@@ -62,13 +62,14 @@ namespace GamesUI.ViewModels
         }
 
         public MainWindowViewModel(
+            UIViewModelToken token,
             IPluginViewModel pluginViewModel,
             ILoginViewModel loginViewModel)
         {
             log.Debug("Start Games Programm");
             _pluginViewModel = pluginViewModel;
             _loginViewModel = loginViewModel;
-
+            _token = token;
 
         }
     }
