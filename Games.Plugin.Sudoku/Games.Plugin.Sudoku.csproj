@@ -87,6 +87,7 @@
     </Compile>
     <Compile Include="GamePlan\IGamePlanViewModel.cs" />
     <Compile Include="GameSudoku\GameSudokuViewModel.cs" />
+    <Compile Include="GameSudoku\GameSudokuViewToken.cs" />
     <Compile Include="GameSudoku\IGameSudokuViewModel.cs" />
     <Compile Include="GameSudoku\NewGame\GameDifficulty.cs" />
     <Compile Include="GameSudoku\NewGame\INewGameViewModel.cs" />

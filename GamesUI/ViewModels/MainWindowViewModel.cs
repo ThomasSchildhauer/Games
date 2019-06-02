@@ -21,7 +21,6 @@ namespace GamesUI.ViewModels
         {
             get => new RelayCommand(() =>
             {
-                //_loginViewModel.Visible = true;
                 MessengerInstance.Send(new ControleVisible(nameof(LoginViewModel)), _token);
             });
         }

@@ -6,6 +6,7 @@
         xmlns:v="clr-namespace:Games.Plugin.Sudoku.GameSudoku.NewGame"
              xmlns:sudoku="clr-namespace:Games.Plugin.Sudoku.GamePlan"
              xmlns:local="clr-namespace:Games.Plugin.Sudoku.GameSudoku"
+        xmlns:new="clr-namespace:Games.Plugin.Sudoku.GameSudoku.NewGame"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="800">
     <Window.Resources>
@@ -14,14 +15,11 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top" FontSize="18">
             <MenuItem Header="_New Game">
-                <MenuItem Command="{Binding LoginCommand}" Header="_Login"/>
+                <MenuItem Command="{Binding NewGameCommand}" Header="_New Game"/>
             </MenuItem>
         </Menu>
         <Grid>
-
-            <!--<v:NewGameView Datacontext
-            <v:PluginView DataContext="{Binding PluginViewModel}" Visibility="{Binding Visible, Converter={StaticResource BoolToVis}}"/>
-            <v:LoginView DataContext="{Binding LoginViewModel}" Visibility="{Binding Visible, Converter={StaticResource BoolToVis}}"/>-->
+            <new:NewGameView DataContext="{Binding NewGameViewModel}" Visibility="{Binding Visible, Converter={StaticResource BoolToVis}}"/>
         </Grid>
     </DockPanel>
 </Window>

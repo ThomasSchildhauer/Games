@@ -2,6 +2,8 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using Games.Plugin.Sudoku.Events;
+using GamesBase.Messages;
+using GamesBase.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,7 @@ using System.Windows.Input;
 
 namespace Games.Plugin.Sudoku.GameSudoku.NewGame
 {
-    public class NewGameViewModel : ViewModelBase, INewGameViewModel
+    public class NewGameViewModel : ViewModelVisibilityBase, INewGameViewModel
     {
         private readonly bool _canExecute = true;
         private int _difficulty;
@@ -33,16 +35,13 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
             set => Set(nameof(OkButtonIsEnabled), ref _okButtonIsEnabled, value);
         }
 
+        public ICommand ButtonClickHard { get; private set; }
+        public ICommand ButtonClickMiddle { get; private set; }
+        public ICommand ButtonClickEasy { get; private set; }
+        public ICommand ButtonClickOk { get; private set; }
+        public ICommand ButtonClickCancel { get; private set; }
 
-        public ICommand ButtonClickHard;
-
-        public ICommand ButtonClickMiddle;
-
-        public ICommand ButtonClickEasy;
-
-        public ICommand ButtonClickOk;
-
-        public ICommand ButtonClickCancel;
+        private GameSudokuViewToken _token;
 
         public int Difficulty
         {
@@ -51,8 +50,12 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
             set => Set(nameof(Difficulty), ref _difficulty, value);
         }
 
-        public NewGameViewModel()
+        public NewGameViewModel(GameSudokuViewToken token) : base(nameof(NewGameViewModel))
         {
+            _token = token;
+
+            MessengerInstance.Register<ControleVisible>(this, _token, CheckVisibility);
+
             InitCommands();
         }
 
@@ -62,6 +65,7 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
             {
                 SelectedGameDifficulty = (int)GameDifficulty.Difficulty.Hard;
                 OkButtonIsEnabled = true;
+                Visible = false;
             }
             , _canExecute);
 
@@ -82,6 +86,7 @@ namespace Games.Plugin.Sudoku.GameSudoku.NewGame
             ButtonClickOk = new RelayCommand(() =>
             {
                 SetDifficulty?.Invoke(this, EventArgs.Empty);
+                Visible = false;
             }
             , _canExecute);
 

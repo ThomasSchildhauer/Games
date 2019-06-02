@@ -29,6 +29,7 @@ namespace Games.Plugin.Sudoku.Module
             builder.RegisterType<CompareGamePlans>().As<ICompareGamePlans>();
             builder.RegisterType<NewGameViewModel>().As<INewGameViewModel>();
             builder.RegisterType<GameSudokuViewModel>().As<IGameSudokuViewModel>();
+            builder.RegisterType<GameSudokuViewToken>().AsSelf().SingleInstance();
         }
     }
 }

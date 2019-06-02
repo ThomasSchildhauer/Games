@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using Games.Plugin.Sudoku.Events;
 using Games.Plugin.Sudoku.GameSudoku.NewGame;
+using GamesBase.Messages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,25 +16,33 @@ namespace Games.Plugin.Sudoku.GameSudoku
 {
     public class GameSudokuViewModel : ViewModelBase, IGameSudokuViewModel
     {
-        private readonly bool _isExecutable = true;
+        private GameSudokuViewToken _token;
 
-        public INewGameViewModel NewGameViewModel { get; }
-
-        public ICommand NewGameCommand;
-        //public event EventHandler OpenNewGame;
-
-        public GameSudokuViewModel(INewGameViewModel newGameViewModel)
+        public ICommand NewGameCommand
         {
-            NewGameViewModel = newGameViewModel;
-            InitCommands();
+            get => new RelayCommand(() =>
+            {
+                MessengerInstance.Send(new ControleVisible(nameof(Games.Plugin.Sudoku.GameSudoku.NewGame.NewGameViewModel)), _token);
+            });
         }
 
-        private void InitCommands()
+        private INewGameViewModel _newGameViewModel;
+
+        public INewGameViewModel NewGameViewModel
         {
-            NewGameCommand = new RelayCommand(() =>
+            get => _newGameViewModel;
+            set
             {
-                // ToDo here is something missing
-            }, _isExecutable);
+                Set(nameof(NewGameViewModel), ref _newGameViewModel, value);
+            }
+        }
+
+        public GameSudokuViewModel(
+            INewGameViewModel newGameViewModel,
+            GameSudokuViewToken token)
+        {
+            _token = token;
+            NewGameViewModel = newGameViewModel;
         }
     }
 }
